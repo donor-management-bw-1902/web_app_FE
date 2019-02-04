@@ -5,9 +5,6 @@ import {
     ADDING_USER,
     ADDING_USER_SUCCESS,
     ADDING_USER_FAILURE,
-    UPDATE_USER,
-    UPDATE_USER_SUCCESS,
-    UPDATE_USER_FAILURE
 } from '../actions';
 
 
@@ -16,7 +13,6 @@ const initialState = {
     users: [],
     isFetchingUsers: false,
     isAddingUser: false,
-    isUpdatingUser: false,
     isAdmin: '',
     userId: '',
     error: ''
@@ -65,26 +61,6 @@ export const userReducer = (state = initialState, action ) => {
                 error: action.payload,
                 isAddingUser: false
             };
-        // ====================== UPDATE_USER
-        case UPDATE_USER: 
-            return {
-                ...state,
-                isUpdatingUser: true,
-                error: ''
-            }
-        case UPDATE_USER_SUCCESS: 
-            return {
-                ...state,
-                users: action.payload,
-                isUpdatingUser: false,
-                error: ''
-            }
-        case UPDATE_USER_FAILURE: 
-            return {
-                ...state,
-                error: action.payload,
-                isUpdatingUser: false
-            }
         default:
             return state;
     }

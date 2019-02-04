@@ -5,12 +5,6 @@ export {
     ADDING_USER,
     ADDING_USER_SUCCESS,
     ADDING_USER_FAILURE,
-    DELETE_USER,
-    DELETE_USER_SUCCESS,
-    DELETE_USER_FAILURE,
-    UPDATE_USER,
-    UPDATE_USER_SUCCESS,
-    UPDATE_USER_FAILURE,
     getUsers,
     addNewUser
 } from './userActions';

@@ -6,25 +6,20 @@ export const FETCHING_USERS_FAILURE = 'FETCHING_USERS_FAILURE';
 export const ADDING_USER = 'ADDING_USER';
 export const ADDING_USER_SUCCESS = 'ADDING_USER_SUCCESS';
 export const ADDING_USER_FAILURE = 'ADDING_USER_FAILURE';
-export const DELETE_USER = 'DELETE_USER';
-export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
-export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE';
-export const UPDATE_USER = 'UPDATE_USER';
-export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
-export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
 
 export const getUsers = () => dispatch => {
     dispatch({ type: FETCHING_USERS });
+    axios
+        .get('')
+        .then(res => dispatch({ type: FETCHING_USERS_SUCCESS, payload: res.data }))
+        .catch(err => dispatch({ type: FETCHING_USERS_FAILURE, payload: err }))
 };
 
 export const addNewUser = user => dispatch => {
     dispatch({ type: ADDING_USER });
+    axios
+        .post('', user)
+        .then(res => dispatch({ type: ADDING_USER_SUCCESS, payload: res.data }))
+        .catch(err => dispatch({ type: ADDING_USER_FAILURE, payload: err }))
 };
 
-export const updateUser = ( user, id) => dispatch => {
-    dispatch({ type: UPDATE_USER });
-};
-
-export const deleteUser = id => dispatch => {
-    dispatch({ type: DELETE_USER });
-};
