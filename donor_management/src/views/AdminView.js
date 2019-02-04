@@ -7,10 +7,8 @@ import { addNewDonor } from '../store/actions';
 class AdminView extends React.Component {
     state = {
         donorName: '',
-        contactInfo: {
-            phoneNumber:'',
-            email: ''
-        },
+        phoneNumber:'',
+        email: '',
         pastDonations: [],
         locationOfDonation: '',
         dateOfCommunication: '',
@@ -20,6 +18,10 @@ class AdminView extends React.Component {
     handleInput = e => {
         e.preventDefault();
         this.setState({ [e.target.name]: e.target.value });
+    }
+
+    handleSelect = e => {
+        this.setState({ methodOfCommunication: e.target.value });
     }
     addNewDonor = e => {
         e.preventDefault();
@@ -38,10 +40,12 @@ class AdminView extends React.Component {
             <div>
                 <Admin 
                     donorName={this.state.donorName} 
-                    contactInfo={this.state.contactInfo} 
+                    phoneNumber={this.state.phoneNumber}
+                    email={this.state.email}
                     dateOfCommunication={this.state.dateOfCommunication} 
                     methodOfCommunication={this.state.methodOfCommunication}
                     handleInput={this.handleInput}
+                    handleSelect={this.handleSelect}
                 />
             </div>
         );
