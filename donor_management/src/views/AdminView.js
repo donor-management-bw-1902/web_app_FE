@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import UserProfile from '../components/UserProfile';
+import Admin from '../components/Admin';
 import { updateUser, deleteUser } from '../store/actions';
 
-class UserProfileView extends React.Component {
+class AdminView extends React.Component {
     render(){
         return (
             <div>
@@ -24,4 +24,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { updateUser, deleteUser }
-)(UserProfileView);
+)(AdminView);

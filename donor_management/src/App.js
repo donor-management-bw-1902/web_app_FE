@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from "react-router-dom";
 
 import './App.css';
-import { SignUpView, LoginView } from './views';
+import { SignUpView, LoginView, DonorsView } from './views';
 
 class App extends Component {
   render() {
@@ -10,9 +10,9 @@ class App extends Component {
       <div className="App">
         <Route exact path = "/" component = {LoginView}/>
         <Route path = "/Sign-up" component = {SignUpView} />
+        <Route path = "/donors" component = {DonorsView} />
       </div>
     );
   }
 }
-
 export default App;
