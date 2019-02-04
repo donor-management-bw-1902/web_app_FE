@@ -20,7 +20,12 @@ class LoginView extends React.Component {
     render() {
         return(
             <div>
-                <Login history={this.props.history}/>
+                <Login 
+                    history={this.props.history} 
+                    username={this.state.username}
+                    password={this.state.password}
+                    handleLogin={this.handleLogin}
+                />
             </div>
         );
     }
