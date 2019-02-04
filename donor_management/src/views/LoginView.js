@@ -14,7 +14,7 @@ class LoginView extends React.Component {
     }
 
     login = () => {
-
+        
     }
     
     render() {

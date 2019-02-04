@@ -2,10 +2,10 @@ import React from 'react';
 
 function SingUp (props) {
     return (
-        <form>
-            <input type="text" name="username" placeholder="Username" />
-            <input type="password" name="password" placeholder="Password" />
-            <input type="email" name="email" placeholder="Email Address" />
+        <form onSubmit={props.SignUp}>
+            <input type="text" name="username" placeholder="Username" value={props.username} onChange={props.handleSignUp}/>
+            <input type="password" name="password" placeholder="Password" value={props.password} onChange={props.handleSignUp}/>
+            <input type="email" name="email" placeholder="Email Address" value={props.email} onChange={props.handleSignUp}/>
             <button>Create Account</button>
         </form>
     );
