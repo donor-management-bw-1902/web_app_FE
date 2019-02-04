@@ -17,7 +17,7 @@ export const getUsers = () => dispatch => {
     dispatch({ type: FETCHING_USERS });
 };
 
-export const addNewUser = user => {
+export const addNewUser = user => dispatch => {
     dispatch({ type: ADDING_USER });
 };
 
