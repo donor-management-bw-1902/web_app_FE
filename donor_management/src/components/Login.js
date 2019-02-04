@@ -6,7 +6,7 @@ function Login (props) {
             <input type="text" name="username" placeholder="Username" />
             <input type="password" name="password" placeholder="Password" />
             <button>Login</button>
-            <button>Sign Up</button>
+            <button onClick={() => {props.history.push('/Sign-up')}}>Sign Up</button>
         </form>
     );
 };

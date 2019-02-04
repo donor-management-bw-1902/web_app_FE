@@ -20,7 +20,7 @@ class LoginView extends React.Component {
     render() {
         return(
             <div>
-                <Login />
+                <Login history={this.props.history}/>
             </div>
         );
     }
