@@ -17,6 +17,7 @@ const initialState = {
     isFetchingUsers: false,
     isAddingUser: false,
     isUpdatingUser: false,
+    isAdmin: '',
     userId: '',
     error: ''
 };

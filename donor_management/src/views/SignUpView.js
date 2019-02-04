@@ -8,7 +8,6 @@ class SignUpView extends React.Component {
     state = {
         username: '',
         password: '',
-        email: ''
     };
 
     handleSignUp = e => {
@@ -17,7 +16,7 @@ class SignUpView extends React.Component {
 
     SignUp = e => {
         e.preventDefault();
-        const newUser = { username: this.state.username, password:this.state.password, email: this.state.email };
+        const newUser = { username: this.state.username, password:this.state.password };
         this.props.addNewUser(newUser);
         const boardMember = this.state.username;
         if(this.state.password.length < 3) {
@@ -34,7 +33,6 @@ class SignUpView extends React.Component {
                 SignUp={this.SignUp}
                 username={this.state.username}
                 password={this.state.password}
-                email={this.state.email} 
                 handleSignUp={this.handleSignUp}
             />
         );

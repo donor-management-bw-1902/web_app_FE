@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Admin from '../components/Admin';
-import { updateUser, deleteUser } from '../store/actions';
+import { addNewUser } from '../store/actions';
 
 class AdminView extends React.Component {
     render(){
@@ -23,5 +23,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { updateUser, deleteUser }
+    { addNewUser }
 )(AdminView);

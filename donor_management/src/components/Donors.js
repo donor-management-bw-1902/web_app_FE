@@ -4,7 +4,7 @@ import Donor from './Donor';
 const Donors = props => {
     return (
         <div className="donors-list">
-            {props.users.map( donor => {
+            {props.donors.map( donor => {
                 return <Donor donor={donor}/>
             })}
         </div>

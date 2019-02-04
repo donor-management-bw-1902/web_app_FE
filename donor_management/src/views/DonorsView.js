@@ -2,24 +2,24 @@ import React from 'react';
 import { connect } from "react-redux";
 
 import { Donors } from '../components';
-import { getUsers } from '../store/actions';
+import { getDonors } from '../store/actions';
 
 class DonorsView extends React.Component {
 
     componentDidMount() {
-        this.props.getUsers();
+        this.props.getDonors();
     }
 
     render(){
         return (
             <> 
-                {this.props.isFetchingUsers && (
+                {this.props.isFetchingDonors && (
                     <h1>Loading......</h1>
                 )}
-                {this.props.users && (
+                {this.props.donors && (
                     <div>
                         <h1>Donors</h1>
-                        <Donors users={this.props.users}/>
+                        <Donors donors={this.props.donors}/>
                     </div>
                 )}
             </>
@@ -28,11 +28,11 @@ class DonorsView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    users: state.userReducer.users,
-    isFetchingUsers: state.userReducer.isFetchingUsers
+    donors: state.BoardMemberReducer.donors,
+    isFetchingDonors: state.BoardMemberReducer.isFetchingDonors
 });
 
 export default connect(
     mapStateToProps,
-    { getUsers }
+    { getDonors }
 )(DonorsView);
