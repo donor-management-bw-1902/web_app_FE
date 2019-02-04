@@ -3,8 +3,8 @@ import React from 'react';
 const Donor = props => {
     return (
         <div className="donor-wrapper">
-            <h1>{props.name}</h1>
-            <p>{props.lastContacted}</p>
+            <h1>{props.donor.name}</h1>
+            <p>{props.donor.lastContacted}</p>
         </div>
     );
 }

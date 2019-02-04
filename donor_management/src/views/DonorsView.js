@@ -19,7 +19,7 @@ class DonorsView extends React.Component {
                 {this.props.users && (
                     <div>
                         <h1>Donors</h1>
-                        <Donors />
+                        <Donors users={this.props.users}/>
                     </div>
                 )}
             </>

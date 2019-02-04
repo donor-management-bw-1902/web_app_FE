@@ -5,20 +5,17 @@ import {
     ADDING_USER,
     ADDING_USER_SUCCESS,
     ADDING_USER_FAILURE,
-    DELETE_USER,
-    DELETE_USER_SUCCESS,
-    DELETE_USER_FAILURE,
     UPDATE_USER,
     UPDATE_USER_SUCCESS,
     UPDATE_USER_FAILURE
 } from '../actions';
 
 
+
 const initialState = {
     users: [],
     isFetchingUsers: false,
     isAddingUser: false,
-    isDeletingUser: false,
     isUpdatingUser: false,
     userId: '',
     error: ''
@@ -66,26 +63,6 @@ export const userReducer = (state = initialState, action ) => {
                 ...state,
                 error: action.payload,
                 isAddingUser: false
-            };
-        // ===================== DELETE_USER
-        case DELETE_USER:
-            return {
-                ...state,
-                isDeletingFriend: true,
-                error: ''
-            };
-        case DELETE_USER_SUCCESS:
-            return {
-                ...state,
-                users: action.payload,
-                isDeletingUser: false,
-                error: ''
-            };
-        case DELETE_USER_FAILURE: 
-            return {
-                ...state,
-                error: action.payload,
-                isDeletingUser: false
             };
         // ====================== UPDATE_USER
         case UPDATE_USER: 
