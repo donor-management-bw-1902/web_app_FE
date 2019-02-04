@@ -7,7 +7,10 @@ import {
     ADDING_USER_FAILURE,
     DELETE_USER,
     DELETE_USER_SUCCESS,
-    DELETE_USER_FAILURE
+    DELETE_USER_FAILURE,
+    UPDATE_USER,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_FAILURE
 } from '../actions';
 
 
@@ -28,41 +31,41 @@ export const userReducer = (state = initialState, action ) => {
             return {
                 ...state,
                 error: '',
-                isFetchingFriends: true
+                isFetchingUsers: true
             };
 
         case FETCHING_USERS_SUCCESS: 
             return {
                 ...state,
-                friends: action.payload,
+                users: action.payload,
                 error: '',
-                isFetchingFriends: false
+                isFetchingUsers: false
             }
         case FETCHING_USERS_FAILURE:
             return {
                 ...state,
                 error: action.payload,
-                isFetchingFriends: false
+                isFetchingUsers: false
             };
         // ===================== ADDING_USER
         case ADDING_USER:
             return {
                 ...state,
-                isAddingFriend: true,
+                isAddingUser: true,
                 error: ''
             };
         case ADDING_USER_SUCCESS:
             return {
                 ...state,
-                friends: action.payload,
-                isAddingFriend: false,
+                users: action.payload,
+                isAddingUser: false,
                 error: ''
             };
         case ADDING_USER_FAILURE: 
             return {
                 ...state,
                 error: action.payload,
-                isAddingFriend: false
+                isAddingUser: false
             };
         // ===================== DELETE_USER
         case DELETE_USER:
@@ -74,15 +77,35 @@ export const userReducer = (state = initialState, action ) => {
         case DELETE_USER_SUCCESS:
             return {
                 ...state,
-                friends: action.payload,
-                isDeletingFriend: false,
+                users: action.payload,
+                isDeletingUser: false,
                 error: ''
             };
         case DELETE_USER_FAILURE: 
             return {
                 ...state,
                 error: action.payload,
-                isDeletingFriend: false
+                isDeletingUser: false
             };
+        // ====================== UPDATE_USER
+        case UPDATE_USER: 
+            return {
+                ...state,
+                isUpdatingUser: true,
+                error: ''
+            }
+        case UPDATE_USER_SUCCESS: 
+            return {
+                ...state,
+                users: action.payload,
+                isUpdatingUser: false,
+                error: ''
+            }
+        case UPDATE_USER_FAILURE: 
+            return {
+                ...state,
+                error: action.payload,
+                isUpdatingUser: false
+            }
     }
 };
