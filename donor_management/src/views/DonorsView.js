@@ -28,8 +28,8 @@ class DonorsView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    donors: state.BoardMemberReducer.donors,
-    isFetchingDonors: state.BoardMemberReducer.isFetchingDonors
+    donors: state.donorReducer.donors,
+    isFetchingDonors: state.donorReducer.isFetchingDonors
 });
 
 export default connect(

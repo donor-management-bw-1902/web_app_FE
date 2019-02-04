@@ -16,7 +16,7 @@ class SignUpView extends React.Component {
 
     SignUp = e => {
         e.preventDefault();
-        const newUser = { username: this.state.username, password:this.state.password };
+        const newUser = { username: this.state.username, password: this.state.password };
         this.props.addNewUser(newUser);
         const boardMember = this.state.username;
         if(this.state.password.length < 3) {

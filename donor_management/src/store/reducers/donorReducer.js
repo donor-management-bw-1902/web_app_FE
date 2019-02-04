@@ -12,7 +12,7 @@ const initialState = {
     error:''
 };
 
-export const BoardMemberReducer = (state = initialState, action) => {
+export const donorReducer = (state = initialState, action) => {
     switch(action.type){
         // ===================== FETCHING_DONORS
         case FETCHING_DONORS:

@@ -17,7 +17,7 @@ class LoginView extends React.Component {
     login = () => {
         //fetch the users from the DB and compare login info with what is in the database check if admin or not if user is in database redirect them
         //to their webpage either Admin page or Boardmember page
-
+        
         if(this.props.isAdmin){
             this.props.history.push('/admin');
         } else {

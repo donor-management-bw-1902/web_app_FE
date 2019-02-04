@@ -13,5 +13,9 @@ export {
     FETCHING_DONORS,
     FETCHING_DONORS_SUCCESS,
     FETCHING_DONORS_FAILURE,
-    getDonors
-} from './boardMemberActions';
+    getDonors,
+    ADDING_DONOR,
+    ADDING_DONOR_SUCCESS,
+    ADDING_DONOR_FAILURE,
+    addNewDonor
+} from './donorActions';

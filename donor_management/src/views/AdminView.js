@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Admin from '../components/Admin';
-import { addNewUser } from '../store/actions';
+import { addNewDonor } from '../store/actions';
 
 class AdminView extends React.Component {
     render(){
@@ -15,13 +15,10 @@ class AdminView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    users: state.userReducer.users,
-    isUpdatingUser: state.userReducer.isUpdatingUser,
-    isDeletingUser: state.userReducer.isDeletingUser,
-    userId: state.userReducer.userId
+    donors: state.donorReducer.donors
 });
 
 export default connect(
     mapStateToProps,
-    { addNewUser }
+    { addNewDonor }
 )(AdminView);
