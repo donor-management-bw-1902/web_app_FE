@@ -1,0 +1,4 @@
+[build]
+  base = "donor_management/"
+  publish = "donor_management/build"
+  command = "yarn build"
