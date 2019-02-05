@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { Login } from '../components';
 import { getUsers } from '../store/actions';
+import '../styles/Login.css';
 
 class LoginView extends React.Component {
     state = {
@@ -31,7 +32,8 @@ class LoginView extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="login-wrapper">
+                <h1>Login</h1>
                 <Login 
                     history={this.props.history} 
                     username={this.state.username}

@@ -1,0 +1,20 @@
+.login-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 14%;
+}
+
+.login-btn-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.login-btn-wrapper button {
+    padding: 4% 9%;
+}
+
+.sign-up-btn {
+    background: deepskyblue;
+    font-size: 1.1rem;
+}

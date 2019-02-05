@@ -1,0 +1,12 @@
+.sign-up-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 14%;
+}
+
+.sign-up-wrapper button {
+    padding: 4% 9%;
+    width: 71%;
+    margin-left: 15%;
+}

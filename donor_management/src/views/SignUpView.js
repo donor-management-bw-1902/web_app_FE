@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { SignUp } from '../components';
 import { addNewUser } from '../store/actions';
+import '../styles/SignUp.css';
 
 class SignUpView extends React.Component {
     state = {
@@ -29,12 +30,15 @@ class SignUpView extends React.Component {
 
     render() {
         return (
-            <SignUp 
-                SignUp={this.SignUp}
-                username={this.state.username}
-                password={this.state.password}
-                handleSignUp={this.handleSignUp}
-            />
+            <div className="sign-up-wrapper">
+                <h1>Sign Up</h1>
+                <SignUp 
+                    SignUp={this.SignUp}
+                    username={this.state.username}
+                    password={this.state.password}
+                    handleSignUp={this.handleSignUp}
+                />
+            </div>
         );
     }
 };

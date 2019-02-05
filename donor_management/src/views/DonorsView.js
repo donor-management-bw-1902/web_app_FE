@@ -17,7 +17,7 @@ class DonorsView extends React.Component {
                     <h1>Loading......</h1>
                 )}
                 {this.props.donors && (
-                    <div>
+                    <div className="donors-wrapper">
                         <h1>Donors</h1>
                         <Donors donors={this.props.donors}/>
                     </div>
