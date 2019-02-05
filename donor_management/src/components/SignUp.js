@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SingUp (props) {
+const SingUp = props => {
     return (
         <form onSubmit={props.SignUp}>
             <input type="text" name="username" placeholder="Username" value={props.username} onChange={props.handleSignUp}/>
