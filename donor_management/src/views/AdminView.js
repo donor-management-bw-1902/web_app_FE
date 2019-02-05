@@ -46,6 +46,7 @@ class AdminView extends React.Component {
                     methodOfCommunication={this.state.methodOfCommunication}
                     handleInput={this.handleInput}
                     handleSelect={this.handleSelect}
+                    addNewDonor={this.addNewDonor}
                 />
             </div>
         );
