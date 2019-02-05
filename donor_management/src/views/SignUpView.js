@@ -31,7 +31,7 @@ class SignUpView extends React.Component {
     render() {
         return (
             <div className="sign-up-wrapper">
-                <h1>Sign Up</h1>
+                <h1>Create Board Member</h1>
                 <SignUp 
                     SignUp={this.SignUp}
                     username={this.state.username}

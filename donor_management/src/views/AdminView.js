@@ -27,19 +27,10 @@ class AdminView extends React.Component {
         const selected = e.target.value;
         let pastDonations = [...this.state.pastDonations];
         let index = pastDonations.findIndex(donation => donation.id === Number(e.target.parentElement.id));
+
         pastDonations[index+1].locationOfDonation = selected;
-        this.setState({ pastDonations, locationOfDonation: selected });
-        console.log(index)
-        // this.state.pastDonations.find((value, index) => {console.log(value.donation + index);});
-        // this.state.pastDonations.map((donation, index) => {
-        //     if(index === Number(e.target.parentElement.id)) {
-        //         newDonation = {...donation, locationOfDonation: selected};  
-        //     }
-        // });
-      
-        console.log(this.state.pastDonations);
         
-        // console.log(this.state.pastDonations[e.target.parentElement.id]);
+        this.setState({ pastDonations, locationOfDonation: selected });
     }
 
     addNewDonor = e => {
