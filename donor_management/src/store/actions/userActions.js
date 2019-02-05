@@ -25,10 +25,10 @@ export const getUsers = () => dispatch => {
         .catch(err => dispatch({ type: FETCHING_USERS_FAILURE, payload: err }))
 };
 
-export const addNewUser = user => dispatch => {
+export const addNewUser = (user, authToken )=> dispatch => {
     dispatch({ type: ADDING_USER });
     axios
-        .post('', user)
+        .post('https://donor-management.herokuapp.com/api/register', user, { headers: { Authorization: authToken }})
         .then(res => dispatch({ type: ADDING_USER_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: ADDING_USER_FAILURE, payload: err }))
 };

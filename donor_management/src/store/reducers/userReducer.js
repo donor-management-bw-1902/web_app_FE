@@ -76,7 +76,7 @@ export const userReducer = (state = initialState, action ) => {
         case ADDING_USER_SUCCESS:
             return {
                 ...state,
-                users: action.payload,
+                userId: action.payload,
                 isAddingUser: false,
                 error: ''
             };
