@@ -25,7 +25,15 @@ function Admin (props) {
             <h2>Past Donations</h2>
             <ul>
                 {props.pastDonations.map(donation => {
-                    return <li>{donation}</li>;
+                    return <li>
+                    {`$${donation}`} 
+                        <select>
+                            <option value="">--Please choose a location--</option>
+                            <option value="adopt-a-community">Adopt-a-Community</option>
+                            <option value="nutritour">Nutritour</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </li>;
                 })}
             </ul>
             <form onSubmit={props.addDonation}>

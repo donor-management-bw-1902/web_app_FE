@@ -41,7 +41,7 @@ class AdminView extends React.Component {
     addDonation = e => {
         e.preventDefault();
         const newDonations = this.state.pastDonations.concat(this.state.donation);
-        this.setState({ pastDonations: newDonations});
+        this.setState({ pastDonations: newDonations, donation: '' });
     }
     render(){
         return (
@@ -59,6 +59,7 @@ class AdminView extends React.Component {
                     donation={this.state.donation}
                     pastDonations={this.state.pastDonations}
                     addDonation={this.addDonation}
+                    locationOfDonation={this.state.locationOfDonation}
                 />
             </div>
         );
