@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import Admin from '../components/Admin';
 import { addNewDonor } from '../store/actions';
 
+
 class AdminView extends React.Component {
     state = {
         donorName: '',
         phoneNumber:'',
         email: '',
+        donation: '',
         pastDonations: [],
         locationOfDonation: '',
         dateOfCommunication: '',
@@ -23,6 +25,7 @@ class AdminView extends React.Component {
     handleSelect = e => {
         this.setState({ methodOfCommunication: e.target.value });
     }
+
     addNewDonor = e => {
         e.preventDefault();
         const newDonor = { 
@@ -35,9 +38,15 @@ class AdminView extends React.Component {
         this.props.addNewDonor(newDonor);
     }
 
+    addDonation = e => {
+        e.preventDefault();
+        const newDonations = this.state.pastDonations.concat(this.state.donation);
+        this.setState({ pastDonations: newDonations});
+    }
     render(){
         return (
-            <div>
+            <div className="admin-wrapper">
+                <h1>Create Donor</h1>
                 <Admin 
                     donorName={this.state.donorName} 
                     phoneNumber={this.state.phoneNumber}
@@ -47,6 +56,9 @@ class AdminView extends React.Component {
                     handleInput={this.handleInput}
                     handleSelect={this.handleSelect}
                     addNewDonor={this.addNewDonor}
+                    donation={this.state.donation}
+                    pastDonations={this.state.pastDonations}
+                    addDonation={this.addDonation}
                 />
             </div>
         );
