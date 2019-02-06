@@ -23,7 +23,7 @@ class DonorsView extends React.Component {
                 {this.props.donors && (
                     <div className="donors-wrapper">
                         <h1>Donors</h1>
-                        <Donors donors={this.props.donors}/>
+                        <Donors donors={this.props.donors} isAdmin={this.props.isAdmin}/>
                     </div>
                 )}
             </>
@@ -34,7 +34,8 @@ class DonorsView extends React.Component {
 const mapStateToProps = state => ({
     donors: state.donorReducer.donors,
     isFetchingDonors: state.donorReducer.isFetchingDonors,
-    authToken: state.userReducer.authToken
+    authToken: state.userReducer.authToken,
+    isAdmin: state.userReducer.isAdmin
 });
 
 export default connect(

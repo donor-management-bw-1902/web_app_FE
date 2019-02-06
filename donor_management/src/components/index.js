@@ -5,3 +5,4 @@ export { default as CreateDonor } from './CreateDonor';
 export { default as Admin } from './Admin';
 export { default as AddDonations } from './AddDonations';
 export { default as UpdateDonor } from './UpdateDonor';
+export { default as SingleDonor } from './SingleDonor';
