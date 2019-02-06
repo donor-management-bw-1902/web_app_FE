@@ -3,9 +3,10 @@ import React from 'react';
 const UpdateDonor = props => {
     const updatedDonor = e => {
         e.preventDefault();
-        
+
         props.updateDonor();
         props.history.push('/donors')
+        alert('Donor updated!');
     }
     return (
         <div>
