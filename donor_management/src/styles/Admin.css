@@ -5,6 +5,11 @@
     margin-top: 14%;
 }
 
+.admin-wrapper button {
+    padding: 7% 2%;
+    font-size: 1.5rem;
+}
+
 .create-donor-tab {
     display: none;
 }
