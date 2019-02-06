@@ -40,10 +40,10 @@ export const addDonation = (donation, authToken) => dispatch => {
         .catch(err => dispatch({ type: ADDING_DONATION_FAILURE, payload: err }))
 };
 
-export const updateDonor = (donor, authToken) => dispatch => {
+export const updateDonor = (donor, id, authToken) => dispatch => {
     dispatch({ type: UPDATING_DONOR });
     axios
-        .put(`https://donor-management.herokuapp.com/api/donors${donor.id}`, donor, { headers: { Authorization: authToken }})
+        .put(`https://donor-management.herokuapp.com/api/donors/${id}`, donor, { headers: { Authorization: authToken }})
         .then(res => dispatch({ type: UPDATING_DONOR_SUCCESS, payload: res }))
         .catch(err => dispatch({ type: UPDATING_DONOR_FAILURE, payload: err }))
 };

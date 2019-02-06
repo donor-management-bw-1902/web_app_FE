@@ -14,7 +14,8 @@ class UpdateDonorView extends React.Component {
         address: '',
         zip: '',
         lastContacted: '',
-        methodOfCommunication: ''
+        methodOfCommunication: '',
+        id: ''
     };
 
     handleInput = e => {
@@ -23,8 +24,7 @@ class UpdateDonorView extends React.Component {
         this.setState({ [e.target.name]: e.target.value} );
     }
 
-    updateDonor = e => {
-        e.preventDefault();
+    updateDonor = () => {
         const newDonor = { 
             name: this.state.donorName, 
             email: this.state.email,
@@ -34,22 +34,26 @@ class UpdateDonorView extends React.Component {
             contactMethod: this.state.methodOfCommunication,
             lastContacted: this.state.lastContacted
         }
-        this.props.addNewDonor(newDonor, this.props.authToken);
-        this.setState({ isSelected: !this.state.isSelected });
+        this.props.updateDonor(newDonor, this.state.id, this.props.authToken);
+        this.props.history.push('/donors');
     }
 
     componentDidMount() {
         const donor = this.props.donors.find(donor => `${donor.id}` === this.props.match.params.id);
-        console.log(donor)
-        this.setState({ 
-            donorName: donor.name,
-            email: donor.email,
-            city: donor.city,
-            address: donor.address,
-            zip: donor.zip,
-            lastContacted: donor.lastContacted,
-            methodOfCommunication: donor.contactMethod
-         });
+        if(!this.props.authToken){
+            this.props.history.push('/');
+        } else {
+            this.setState({ 
+                donorName: donor.name,
+                email: donor.email,
+                city: donor.city,
+                address: donor.address,
+                zip: donor.zip,
+                lastContacted: donor.lastContacted,
+                methodOfCommunication: donor.contactMethod,
+                id: donor.id
+             });
+        }
     }
 
     render() {
@@ -63,7 +67,10 @@ class UpdateDonorView extends React.Component {
             zip={this.state.zip}
             lastContacted={this.state.lastContacted}
             methodOfCommunication={this.state.methodOfCommunication}
-            handleInput={this.handleInput} />
+            handleInput={this.handleInput}
+            updateDonor={this.updateDonor} 
+            history={this.props.history}
+            />
         );
     }
 }

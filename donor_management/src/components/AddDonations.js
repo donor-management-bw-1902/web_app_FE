@@ -3,7 +3,11 @@ import React from 'react';
 import '../styles/Admin.css';
 
 const AddDonations = props => {
-
+    const addedDonations = e => {
+        e.preventDefault();
+        props.history.push('/admin');
+        alert('Donor Created!');
+    }
     return(
         <div>
             <h2>Past Donations</h2>
@@ -27,7 +31,7 @@ const AddDonations = props => {
                     <button>+</button>
                 </label>
             </form>
-            <button>Finish</button>
+            <button onClick={e => addedDonations(e)}>Finish</button>
         </div>
     );
 }

@@ -112,6 +112,7 @@ class CreaterDonorView extends React.Component {
                         handleSelect={this.handleSelect}
                         addDonation={this.addDonation}
                         dbAddDonation={this.dbAddDonation}
+                        history={this.props.history}
                     />
                 </div >
             </div>
