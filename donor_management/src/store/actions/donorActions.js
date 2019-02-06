@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './axios-config';
     
 export const FETCHING_DONORS = 'FETCHING_DONORS';
 export const FETCHING_DONORS_SUCCESS = 'FETCHING_DONORS_SUCCESS';
@@ -13,4 +13,4 @@ export const getDonors = () => dispatch => {
 
 export const addNewDonor = donor => dispatch => {
     dispatch({ type: ADDING_DONOR });
-}
+};
