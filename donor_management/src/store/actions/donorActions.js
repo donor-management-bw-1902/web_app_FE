@@ -1,4 +1,4 @@
-import axios from './axios-config';
+import makeAxios from './axios-config';
     
 export const FETCHING_DONORS = 'FETCHING_DONORS';
 export const FETCHING_DONORS_SUCCESS = 'FETCHING_DONORS_SUCCESS';
