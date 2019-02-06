@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from "react-router-dom";
 
 import './App.css';
-import { SignUpView, LoginView, DonorsView, AdminView } from './views';
+import { SignUpView, LoginView, DonorsView, AdminView, CreateDonorView } from './views';
 
 class App extends Component {
   render() {
@@ -12,6 +12,7 @@ class App extends Component {
         <Route path = "/sign-up" component = {SignUpView} />
         <Route path = "/donors" component = {DonorsView} />
         <Route path = "/admin" component = {AdminView} />
+        <Route path = "/donor" component = {CreateDonorView} />
       </div>
     );
   }

@@ -26,7 +26,11 @@ class SignUpView extends React.Component {
         // } else {
         //     localStorage.setItem('boardmember', boardMember)
         // }
-        // this.props.history.push('/donors');
+        this.props.history.push('/admin');
+        
+        if(!this.props.error){
+            alert("Board Member Created!");
+        }
     }
 
     componentDidMount(){

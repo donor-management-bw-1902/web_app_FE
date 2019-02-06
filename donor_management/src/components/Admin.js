@@ -5,8 +5,8 @@ import '../styles/Admin.css';
 const Admin = props => {
     return(
         <>
-            <button className="sign-up-btn" onClick={() => {props.history.push('/sign-up')}}>Create User</button>
-            <button>Create Donor</button>
+            <button className="sign-up-btn" onClick={() => {props.history.push('/sign-up')}}>Create Board Member</button>
+            <button onClick={() => {props.history.push('/donor')}}>Create Donor</button>
         </>
     );
 }

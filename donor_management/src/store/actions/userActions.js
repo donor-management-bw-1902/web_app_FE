@@ -15,14 +15,14 @@ export const login = user => dispatch => {
     axios
         .post('https://donor-management.herokuapp.com/api/login', user)
         .then(res => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: LOGIN_FAILURE, payload: err }));
+        .catch(err => dispatch({ type: LOGIN_FAILURE, payload: err.message }));
 }
 export const getUsers = () => dispatch => {
     dispatch({ type: FETCHING_USERS });
     axios
         .get('')
         .then(res => dispatch({ type: FETCHING_USERS_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: FETCHING_USERS_FAILURE, payload: err }))
+        .catch(err => dispatch({ type: FETCHING_USERS_FAILURE, payload: err}))
 };
 
 export const addNewUser = (user, authToken )=> dispatch => {

@@ -4,10 +4,10 @@ import {
     FETCHING_DONORS_FAILURE
 } from '../actions';
 
-const donor = { name: "Billy", lastContacted: "3 days ago"};
+// const donor = { name: "Billy", lastContacted: "3 days ago"};
 
 const initialState = {
-    donors:[ donor ],
+    donors:[],
     isFetchingDonors: false,
     error:''
 };

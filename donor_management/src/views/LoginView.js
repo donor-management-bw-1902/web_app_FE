@@ -49,7 +49,7 @@ class LoginView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    users: state.userReducer.users,
+    error: state.userReducer.error,
     authToken: state.userReducer.authToken,
     isAdmin: state.userReducer.isAdmin
 });

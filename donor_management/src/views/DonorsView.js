@@ -7,7 +7,7 @@ import { getDonors } from '../store/actions';
 class DonorsView extends React.Component {
 
     componentDidMount() {
-        this.props.getDonors();
+        this.props.getDonors(this.props.authToken);
     }
 
     render(){
@@ -29,7 +29,8 @@ class DonorsView extends React.Component {
 
 const mapStateToProps = state => ({
     donors: state.donorReducer.donors,
-    isFetchingDonors: state.donorReducer.isFetchingDonors
+    isFetchingDonors: state.donorReducer.isFetchingDonors,
+    authToken: state.userReducer.authToken
 });
 
 export default connect(
