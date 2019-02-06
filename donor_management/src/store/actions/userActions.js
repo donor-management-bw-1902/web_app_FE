@@ -24,7 +24,7 @@ export const addNewUser = user => dispatch => {
     makeAxios()
         .post('register', user)
         .then(res => dispatch({ type: ADDING_USER_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: ADDING_USER_FAILURE, payload: err }))
+        .catch(err => dispatch({ type: ADDING_USER_FAILURE, payload: err }));
 };
 
 export const resetAuthToken = () => dispatch => {
