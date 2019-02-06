@@ -15,6 +15,10 @@ export const getDonors = authToken => dispatch => {
         .catch(err => dispatch({ type: FETCHING_DONORS_FAILURE, payload: err }))
 };
 
-export const addNewDonor = donor => dispatch => {
+export const addNewDonor = (donor, authToken) => dispatch => {
     dispatch({ type: ADDING_DONOR });
-}
+    axios
+        .post('https://donor-management.herokuapp.com/api/donors', donor, { headers: { Authorization: authToken }})
+        .then(res => dispatch({ type: ADDING_DONOR_SUCCESS, payload: res.data }))
+        .catch(err => dispatch({ type: ADDING_DONOR_FAILURE, payload: err }))
+};

@@ -77,7 +77,8 @@ class CreaterDonorView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    donors: state.donorReducer.donors
+    donors: state.donorReducer.donors,
+    userId: state.userReducer.userId
 });
 
 export default connect(
