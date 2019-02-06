@@ -77,7 +77,11 @@ class CreaterDonorView extends React.Component {
     }
 
     componentDidMount(){
-        if(!localStorage.getItem('AuthToken')){
+        if(this.props.isAdmin === 1){
+            if(!localStorage.getItem('AuthToken')){
+                this.props.history.push('/');
+            }
+        } else {
             this.props.history.push('/');
         }
     }
@@ -121,7 +125,8 @@ class CreaterDonorView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    donors: state.donorReducer.donors
+    donors: state.donorReducer.donors,
+    isAdmin: state.userReducer.isAdmin
 });
 
 export default connect(

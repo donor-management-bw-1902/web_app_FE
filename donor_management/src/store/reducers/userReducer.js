@@ -7,7 +7,8 @@ import {
     ADDING_USER_FAILURE,
     LOGIN,
     LOGIN_SUCCESS,
-    LOGIN_FAILURE
+    LOGIN_FAILURE,
+    RESET_AUTH_TOKEN
 } from '../actions';
 
 
@@ -85,6 +86,12 @@ export const userReducer = (state = initialState, action ) => {
                 error: action.payload,
                 isAddingUser: false
             };
+        // ===================== RESET_AUTH_TOKEN
+        case RESET_AUTH_TOKEN:
+            return {
+                ...state,
+                authToken: ''
+            }
         default:
             return state;
     }

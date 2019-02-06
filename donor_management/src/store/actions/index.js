@@ -10,7 +10,9 @@ export {
     LOGIN,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
-    login
+    login,
+    RESET_AUTH_TOKEN,
+    resetAuthToken
 } from './userActions';
 
 export {

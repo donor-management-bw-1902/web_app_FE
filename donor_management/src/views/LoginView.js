@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Login } from '../components';
-import { getUsers, login } from '../store/actions';
+import { getUsers, login, resetAuthToken } from '../store/actions';
 import '../styles/Login.css';
 
 class LoginView extends React.Component {
@@ -19,6 +19,13 @@ class LoginView extends React.Component {
         e.preventDefault();
         const user = { username: this.state.username, password: this.state.password }
         this.props.login(user);
+    }
+
+    componentDidMount(){
+        if(localStorage.getItem('AuthToken')) {
+            localStorage.removeItem('AuthToken');
+        }
+        this.props.resetAuthToken();
     }
 
     componentDidUpdate(){
@@ -57,5 +64,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getUsers, login }
+    { getUsers, login, resetAuthToken }
 )(LoginView);

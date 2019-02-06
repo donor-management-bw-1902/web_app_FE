@@ -40,20 +40,24 @@ class UpdateDonorView extends React.Component {
 
     componentDidMount() {
         const donor = this.props.donors.find(donor => `${donor.id}` === this.props.match.params.id);
-        if(!localStorage.getItem('AuthToken')){
+       if(this.props.isAdmin === 1){
+            if(!localStorage.getItem('AuthToken')){
+                this.props.history.push('/');
+            } else {
+                this.setState({ 
+                    donorName: donor.name,
+                    email: donor.email,
+                    city: donor.city,
+                    address: donor.address,
+                    zip: donor.zip,
+                    lastContacted: donor.lastContacted,
+                    methodOfCommunication: donor.contactMethod,
+                    id: donor.id
+                });
+            }
+       } else {
             this.props.history.push('/');
-        } else {
-            this.setState({ 
-                donorName: donor.name,
-                email: donor.email,
-                city: donor.city,
-                address: donor.address,
-                zip: donor.zip,
-                lastContacted: donor.lastContacted,
-                methodOfCommunication: donor.contactMethod,
-                id: donor.id
-             });
-        }
+       }
     }
 
     render() {
@@ -76,7 +80,8 @@ class UpdateDonorView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    donors: state.donorReducer.donors
+    donors: state.donorReducer.donors,
+    isAdmin: state.userReducer.isAdmin
 });
 
 export default connect(

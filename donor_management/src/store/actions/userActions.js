@@ -9,6 +9,7 @@ export const ADDING_USER_FAILURE = 'ADDING_USER_FAILURE';
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const RESET_AUTH_TOKEN = 'RESET_AUTH_TOKEN';
 
 export const login = user => dispatch => {
     dispatch({ type: LOGIN });
@@ -25,7 +26,7 @@ export const getUsers = () => dispatch => {
         .catch(err => dispatch({ type: FETCHING_USERS_FAILURE, payload: err}))
 };
 
-export const addNewUser = (user, authToken )=> dispatch => {
+export const addNewUser = (user, authToken ) => dispatch => {
     dispatch({ type: ADDING_USER });
     axios
         .post('https://donor-management.herokuapp.com/api/register', user, { headers: { Authorization: authToken }})
@@ -33,3 +34,6 @@ export const addNewUser = (user, authToken )=> dispatch => {
         .catch(err => dispatch({ type: ADDING_USER_FAILURE, payload: err }))
 };
 
+export const resetAuthToken = () => dispatch => {
+    dispatch({ type: RESET_AUTH_TOKEN });
+}
