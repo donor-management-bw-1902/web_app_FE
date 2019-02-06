@@ -9,6 +9,9 @@ export const ADDING_DONOR_FAILURE = 'ADDING_DONOR_FAILURE';
 export const ADDING_DONATION = 'ADDING_DONATION';
 export const ADDING_DONATION_SUCCESS = 'ADDING_DONATION_SUCCESS';
 export const ADDING_DONATION_FAILURE = 'ADDING_DONATION_FAILURE';
+export const UPDATING_DONOR = 'UPDATING_DONOR';
+export const UPDATING_DONOR_SUCCESS = 'UPDATING_DONOR_SUCCESS';
+export const UPDATING_DONOR_FAILURE = 'UPDATING_DONOR_FAILURE';
 
 export const getDonors = authToken => dispatch => {
     dispatch({ type: FETCHING_DONORS });
@@ -35,4 +38,12 @@ export const addDonation = (donation, authToken) => dispatch => {
         .post('https://donor-management.herokuapp.com/api/donations', donation, { headers: { Authorization: authToken }})
         .then(res => dispatch({type: ADDING_DONATION_SUCCESS, payload: res }))
         .catch(err => dispatch({ type: ADDING_DONATION_FAILURE, payload: err }))
+};
+
+export const updateDonor = (donor, authToken) => dispatch => {
+    dispatch({ type: UPDATING_DONOR });
+    axios
+        .put(`https://donor-management.herokuapp.com/api/donors${donor.id}`, donor, { headers: { Authorization: authToken }})
+        .then(res => dispatch({ type: UPDATING_DONOR_SUCCESS, payload: res }))
+        .catch(err => dispatch({ type: UPDATING_DONOR_FAILURE, payload: err }))
 };

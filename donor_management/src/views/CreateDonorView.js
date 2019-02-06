@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { CreateDonor } from '../components';
+import { CreateDonor, AddDonations } from '../components';
 import { addNewDonor, addDonation } from '../store/actions';
-import AddDonations from '../components/AddDonations';
 
 import '../styles/Admin.css';
 
@@ -67,7 +66,6 @@ class CreaterDonorView extends React.Component {
         e.preventDefault();
         const donor = this.props.donors.find(donor => donor.email === this.state.email);
         const dValue = e.target.parentElement.value;
-        console.log(dValue)
         const donation = {donationAmount: dValue, donationLocation: this.state.locationOfDonation, donorID: donor.id };
         this.props.addDonation( donation, this.props.authToken );
 

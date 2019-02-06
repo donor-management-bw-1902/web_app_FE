@@ -8,6 +8,9 @@ import {
     ADDING_DONATION,
     ADDING_DONATION_SUCCESS,
     ADDING_DONATION_FAILURE,
+    UPDATING_DONOR,
+    UPDATING_DONOR_SUCCESS,
+    UPDATING_DONOR_FAILURE
 } from '../actions';
 
 const initialState = {
@@ -15,6 +18,8 @@ const initialState = {
     isFetchingDonors: false,
     isAddingDonor: false,
     isAddingDonation: false,
+    isUpdatingDonor: false,
+    response: '',
     error:''
 };
 
@@ -79,6 +84,26 @@ export const donorReducer = (state = initialState, action) => {
                 ...state,
                 error: action.payload,
                 isAddingDonation: false
+            }
+        // ===================== ADDING_DONATIONS
+        case UPDATING_DONOR:
+            return {
+                ...state,
+                isUpdatingDonor: true,
+                error: ''
+            };
+        case UPDATING_DONOR_SUCCESS: 
+            return {
+                ...state,
+                response: action.payload,
+                isUpdatingDonor: false,
+                error: ''
+            }
+        case UPDATING_DONOR_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isUpdatingDonor: false
             }
         default:
             return state;

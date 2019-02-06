@@ -25,5 +25,9 @@ export {
     ADDING_DONATION,
     ADDING_DONATION_SUCCESS,
     ADDING_DONATION_FAILURE,
-    addDonation
+    addDonation,
+    UPDATING_DONOR,
+    UPDATING_DONOR_SUCCESS,
+    UPDATING_DONOR_FAILURE,
+    updateDonor
 } from './donorActions';
