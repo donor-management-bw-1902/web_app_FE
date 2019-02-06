@@ -5,7 +5,6 @@ export {
     ADDING_USER,
     ADDING_USER_SUCCESS,
     ADDING_USER_FAILURE,
-    getUsers,
     addNewUser,
     LOGIN,
     LOGIN_SUCCESS,

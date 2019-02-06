@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Login } from '../components';
-import { getUsers, login, resetAuthToken } from '../store/actions';
+import { login, resetAuthToken } from '../store/actions';
 import '../styles/Login.css';
 
 class LoginView extends React.Component {
@@ -64,5 +64,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getUsers, login, resetAuthToken }
+    { login, resetAuthToken }
 )(LoginView);

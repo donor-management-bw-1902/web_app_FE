@@ -1,4 +1,4 @@
-import axios from 'axios';
+import makeAxios from './axios-config';
 
 export const FETCHING_USERS = 'FETCHING_USERS';
 export const FETCHING_USERS_SUCCESS = 'FETCHING_USERS_SUCCESS';
@@ -13,23 +13,16 @@ export const RESET_AUTH_TOKEN = 'RESET_AUTH_TOKEN';
 
 export const login = user => dispatch => {
     dispatch({ type: LOGIN });
-    axios
-        .post('https://donor-management.herokuapp.com/api/login', user)
+    makeAxios()
+        .post('login', user)
         .then(res => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: LOGIN_FAILURE, payload: err.message }));
 }
-export const getUsers = () => dispatch => {
-    dispatch({ type: FETCHING_USERS });
-    axios
-        .get('')
-        .then(res => dispatch({ type: FETCHING_USERS_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: FETCHING_USERS_FAILURE, payload: err}))
-};
 
-export const addNewUser = (user, authToken ) => dispatch => {
+export const addNewUser = user => dispatch => {
     dispatch({ type: ADDING_USER });
-    axios
-        .post('https://donor-management.herokuapp.com/api/register', user, { headers: { Authorization: authToken }})
+    makeAxios()
+        .post('register', user)
         .then(res => dispatch({ type: ADDING_USER_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: ADDING_USER_FAILURE, payload: err }))
 };
