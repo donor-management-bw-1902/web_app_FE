@@ -9,6 +9,7 @@ class SignUpView extends React.Component {
     state = {
         username: '',
         password: '',
+        name: ''
     };
 
     handleSignUp = e => {
@@ -17,25 +18,34 @@ class SignUpView extends React.Component {
 
     SignUp = e => {
         e.preventDefault();
-        const newUser = { username: this.state.username, password: this.state.password };
-        this.props.addNewUser(newUser);
-        const boardMember = this.state.username;
-        if(this.state.password.length < 3) {
-            alert("Password must be atleast 3 characters long!");
-        } else {
-            localStorage.setItem('boardmember', boardMember)
+        const newUser = { username: this.state.username, password: this.state.password, name: this.state.name };
+        this.props.addNewUser(newUser, localStorage.getItem('AuthToken'));
+        this.props.history.push('/admin');
+        
+        if(!this.props.error){
+            alert("Board Member Created!");
         }
-        this.props.history.push('/donors');
+    }
+
+    componentDidMount(){
+        if(this.props.isAdmin === 1){
+            if(!localStorage.getItem('AuthToken')){
+                this.props.history.push('/');
+            }
+        } else {
+            this.props.history.push('/');
+        }
     }
 
     render() {
         return (
             <div className="sign-up-wrapper">
-                <h1>Sign Up</h1>
+                <h1>Create Board Member</h1>
                 <SignUp 
                     SignUp={this.SignUp}
                     username={this.state.username}
                     password={this.state.password}
+                    name={this.state.name}
                     handleSignUp={this.handleSignUp}
                 />
             </div>
@@ -43,7 +53,9 @@ class SignUpView extends React.Component {
     }
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+    isAdmin: state.userReducer.isAdmin
+});
 
 export default connect(
     mapStateToProps,

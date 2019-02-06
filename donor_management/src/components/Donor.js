@@ -4,7 +4,7 @@ const Donor = props => {
     return (
         <div className="donor-wrapper">
             <h1>{props.donor.name}</h1>
-            <p>{props.donor.lastContacted}</p>
+            <p>Last Contacted on : {props.donor.lastContacted}</p>
         </div>
     );
 }

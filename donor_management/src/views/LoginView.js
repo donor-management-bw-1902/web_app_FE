@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Login } from '../components';
-import { getUsers } from '../store/actions';
+import { login, resetAuthToken } from '../store/actions';
 import '../styles/Login.css';
 
 class LoginView extends React.Component {
@@ -15,19 +15,29 @@ class LoginView extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    login = () => {
-        //fetch the users from the DB and compare login info with what is in the database check if admin or not if user is in database redirect them
-        //to their webpage either Admin page or Boardmember page
-        
-        if(this.props.isAdmin){
-            this.props.history.push('/admin');
-        } else {
-            this.props.history.push('/donors');
-        }
+    login = e => {
+        e.preventDefault();
+        const user = { username: this.state.username, password: this.state.password }
+        this.props.login(user);
     }
-    
-    componentDidMount() {
-        this.props.getUsers();
+
+    componentDidMount(){
+        if(localStorage.getItem('AuthToken')) {
+            localStorage.removeItem('AuthToken');
+        }
+        this.props.resetAuthToken();
+    }
+
+    componentDidUpdate(){
+        
+        if(this.props.authToken){
+            if(this.props.isAdmin === 0)
+            this.props.history.push('/donors')
+            else {
+                this.props.history.push('/admin')
+            }
+            localStorage.setItem('AuthToken', this.props.authToken);
+        } 
     }
 
     render() {
@@ -39,6 +49,7 @@ class LoginView extends React.Component {
                     username={this.state.username}
                     password={this.state.password}
                     handleLogin={this.handleLogin}
+                    login={this.login}
                 />
             </div>
         );
@@ -46,12 +57,12 @@ class LoginView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    users: state.userReducer.users,
-    userId: state.userReducer.userId,
+    error: state.userReducer.error,
+    authToken: state.userReducer.authToken,
     isAdmin: state.userReducer.isAdmin
 });
 
 export default connect(
     mapStateToProps,
-    { getUsers }
+    { login, resetAuthToken }
 )(LoginView);

@@ -1,0 +1,22 @@
+.admin-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 14%;
+}
+
+.create-donor-tab {
+    display: none;
+}
+.selected {
+    display: block;
+}
+
+.header-tab {
+    color: rgba(211, 211, 211, 0.377);
+}
+
+.selected-tab {
+    color: deepskyblue;
+    border-bottom: 1px solid deepskyblue;
+}

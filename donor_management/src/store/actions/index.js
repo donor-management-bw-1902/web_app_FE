@@ -5,8 +5,13 @@ export {
     ADDING_USER,
     ADDING_USER_SUCCESS,
     ADDING_USER_FAILURE,
-    getUsers,
-    addNewUser
+    addNewUser,
+    LOGIN,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    login,
+    RESET_AUTH_TOKEN,
+    resetAuthToken
 } from './userActions';
 
 export {
@@ -17,5 +22,13 @@ export {
     ADDING_DONOR,
     ADDING_DONOR_SUCCESS,
     ADDING_DONOR_FAILURE,
-    addNewDonor
+    addNewDonor,
+    ADDING_DONATION,
+    ADDING_DONATION_SUCCESS,
+    ADDING_DONATION_FAILURE,
+    addDonation,
+    UPDATING_DONOR,
+    UPDATING_DONOR_SUCCESS,
+    UPDATING_DONOR_FAILURE,
+    updateDonor
 } from './donorActions';
