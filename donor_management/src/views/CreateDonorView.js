@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { CreateDonor } from '../components';
-import { addNewDonor } from '../store/actions';
+import { addNewDonor, addDonation } from '../store/actions';
+import AddDonations from '../components/AddDonations';
+
+import '../styles/Admin.css';
 
 let id = 0;
 class CreaterDonorView extends React.Component {
@@ -10,11 +13,15 @@ class CreaterDonorView extends React.Component {
         donorName: '',
         phoneNumber:'',
         email: '',
+        city: '',
+        address: '',
+        zip: '',
         donation: '',
         pastDonations: [],
         lastContacted: '',
         methodOfCommunication: '',
-        locationOfDonation: ''
+        locationOfDonation: '',
+        isSelected: false,
     }
 
     handleInput = e => {
@@ -36,41 +43,79 @@ class CreaterDonorView extends React.Component {
     addNewDonor = e => {
         e.preventDefault();
         const newDonor = { 
-            donorName: this.state.donorName, 
-            contactInfo: {phoneNumber: this.state.phoneNumber, email: this.state.email},
-            pastDonations: this.state.pastDonations,
-            methodOfCommunication: this.state.methodOfCommunication,
+            name: this.state.donorName, 
+            email: this.state.email,
+            city: this.state.city,
+            address: this.state.address,
+            zip: this.state.zip,
+            contactMethod: this.state.methodOfCommunication,
             lastContacted: this.state.lastContacted
         }
-        this.props.addNewDonor(newDonor);
+        this.props.addNewDonor(newDonor, this.props.authToken);
+        this.setState({ isSelected: !this.state.isSelected });
     }
 
     addDonation = e => {
         e.preventDefault();
         id++;
-        const donation = { donation: this.state.donation, id: id }
+        const donation = { donation: this.state.donation, id: id, isAddedDonation: false }
         const newDonations = this.state.pastDonations.concat(donation);
-        this.setState({ pastDonations: newDonations, donation: '' });
+        this.setState({ pastDonations: newDonations, donation: ''});
+    }
+
+    dbAddDonation = e => {
+        e.preventDefault();
+        const donor = this.props.donors.find(donor => donor.email === this.state.email);
+        const dValue = e.target.parentElement.value;
+        console.log(dValue)
+        const donation = {donationAmount: dValue, donationLocation: this.state.locationOfDonation, donorID: donor.id };
+        this.props.addDonation( donation, this.props.authToken );
+
+        let pastDonations = [...this.state.pastDonations];
+        let index = pastDonations.findIndex(donation => donation.id === Number(e.target.parentElement.id));
+
+        pastDonations[index+1].isAddedDonation = true;
+        this.setState({pastDonations, isAddedDonation: true })
+    }
+
+    componentDidMount(){
+        if(!this.props.authToken){
+            this.props.history.push('/');
+        }
     }
 
     render(){
         return (
             <div className="admin-wrapper">
-                <h1>Create Donor</h1>
-                <CreateDonor 
-                    donorName={this.state.donorName} 
-                    phoneNumber={this.state.phoneNumber}
-                    email={this.state.email}
-                    lastContacted={this.state.lastContacted} 
-                    methodOfCommunication={this.state.methodOfCommunication}
-                    handleInput={this.handleInput}
-                    handleSelect={this.handleSelect}
-                    addNewDonor={this.addNewDonor}
-                    donation={this.state.donation}
-                    pastDonations={this.state.pastDonations}
-                    addDonation={this.addDonation}
-                    locationOfDonation={this.state.locationOfDonation}
-                />
+                <div className="create-donor-tabs">
+                    <h1 className={`header-tab ${!this.state.isSelected ? "selected-tab" : null}`}>Create Donor</h1>
+                    <h1 className={`header-tab ${this.state.isSelected ? "selected-tab" : null}`}>Donations</h1>
+                </div>
+                <div className={`create-donor-tab ${!this.state.isSelected ? "selected" : null}`}>
+                    <CreateDonor 
+                        donorName={this.state.donorName} 
+                        phoneNumber={this.state.phoneNumber}
+                        email={this.state.email}
+                        city={this.state.city}
+                        address={this.state.address}
+                        zip={this.state.zip}
+                        lastContacted={this.state.lastContacted} 
+                        methodOfCommunication={this.state.methodOfCommunication}
+                        handleInput={this.handleInput}
+                        addNewDonor={this.addNewDonor}
+                    />
+                </div>
+                <div className={`create-donor-tab ${this.state.isSelected ? "selected" : null}`}>
+                    <AddDonations 
+                        donation={this.state.donation}
+                        pastDonations={this.state.pastDonations}
+                        locationOfDonation={this.state.locationOfDonation}
+                        handleInput={this.handleInput}
+                        handleSelect={this.handleSelect}
+                        addDonation={this.addDonation}
+                        dbAddDonation={this.dbAddDonation}
+                    />
+                </div >
             </div>
         );
     }
@@ -78,10 +123,10 @@ class CreaterDonorView extends React.Component {
 
 const mapStateToProps = state => ({
     donors: state.donorReducer.donors,
-    userId: state.userReducer.userId
+    authToken: state.userReducer.authToken
 });
 
 export default connect(
     mapStateToProps,
-    { addNewDonor }
+    { addNewDonor, addDonation }
 )(CreaterDonorView);

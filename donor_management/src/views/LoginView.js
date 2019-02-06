@@ -29,6 +29,7 @@ class LoginView extends React.Component {
             else {
                 this.props.history.push('/admin')
             }
+            localStorage.setItem('AuthToken', this.props.authToken);
         }
     }
 

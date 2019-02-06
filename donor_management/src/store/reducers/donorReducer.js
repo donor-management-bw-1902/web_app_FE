@@ -4,13 +4,17 @@ import {
     FETCHING_DONORS_FAILURE,
     ADDING_DONOR,
     ADDING_DONOR_SUCCESS,
-    ADDING_DONOR_FAILURE
+    ADDING_DONOR_FAILURE,
+    ADDING_DONATION,
+    ADDING_DONATION_SUCCESS,
+    ADDING_DONATION_FAILURE,
 } from '../actions';
 
 const initialState = {
     donors:[],
     isFetchingDonors: false,
     isAddingDonor: false,
+    isAddingDonation: false,
     error:''
 };
 
@@ -47,7 +51,7 @@ export const donorReducer = (state = initialState, action) => {
         case ADDING_DONOR_SUCCESS:
             return {
                 ...state,
-                donor: action.payload,
+                donors: action.payload,
                 error: '',
                 isAddingDonor: false
             };
@@ -56,6 +60,25 @@ export const donorReducer = (state = initialState, action) => {
                 ...state,
                 error: action.payload,
                 isAddingDonor: false
+            }
+        // ===================== ADDING_DONATIONS
+        case ADDING_DONATION:
+            return {
+                ...state,
+                isAddingDonation: true,
+                error: ''
+            }
+        case ADDING_DONATION_SUCCESS:
+            return {
+                ...state,
+                isAddingDonation: false,
+                error: ''
+            }
+        case ADDING_DONATION_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isAddingDonation: false
             }
         default:
             return state;
