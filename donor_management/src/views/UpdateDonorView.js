@@ -34,13 +34,13 @@ class UpdateDonorView extends React.Component {
             contactMethod: this.state.methodOfCommunication,
             lastContacted: this.state.lastContacted
         }
-        this.props.updateDonor(newDonor, this.state.id, this.props.authToken);
+        this.props.updateDonor(newDonor, this.state.id, localStorage.getItem('AuthToken'));
         this.props.history.push('/donors');
     }
 
     componentDidMount() {
         const donor = this.props.donors.find(donor => `${donor.id}` === this.props.match.params.id);
-        if(!this.props.authToken){
+        if(!localStorage.getItem('AuthToken')){
             this.props.history.push('/');
         } else {
             this.setState({ 
@@ -76,8 +76,7 @@ class UpdateDonorView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    donors: state.donorReducer.donors,
-    authToken: state.userReducer.authToken
+    donors: state.donorReducer.donors
 });
 
 export default connect(

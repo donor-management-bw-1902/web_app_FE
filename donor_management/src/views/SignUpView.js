@@ -19,13 +19,7 @@ class SignUpView extends React.Component {
     SignUp = e => {
         e.preventDefault();
         const newUser = { username: this.state.username, password: this.state.password, name: this.state.name };
-        this.props.addNewUser(newUser, this.props.authToken);
-        // const boardMember = this.state.username;
-        // if(this.state.password.length < 3) {
-        //     alert("Password must be atleast 3 characters long!");
-        // } else {
-        //     localStorage.setItem('boardmember', boardMember)
-        // }
+        this.props.addNewUser(newUser, localStorage.getItem('AuthToken'));
         this.props.history.push('/admin');
         
         if(!this.props.error){
@@ -34,7 +28,7 @@ class SignUpView extends React.Component {
     }
 
     componentDidMount(){
-        if(!this.props.authToken){
+        if(!localStorage.getItem('AuthToken')){
             this.props.history.push('/');
         }
     }
@@ -55,9 +49,7 @@ class SignUpView extends React.Component {
     }
 };
 
-const mapStateToProps = state => ({
-    authToken: state.userReducer.authToken
-});
+const mapStateToProps = state => ({});
 
 export default connect(
     mapStateToProps,

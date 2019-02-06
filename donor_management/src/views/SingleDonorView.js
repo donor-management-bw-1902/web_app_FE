@@ -11,8 +11,11 @@ class SingleDonorView extends React.Component {
     componentDidMount(){
         const donor = this.props.donors.find(donor => `${donor.id}` === this.props.match.params.id);
 
-        if(!this.props.authToken){
+        if(!localStorage.getItem('AuthToken')) {
             this.props.history.push('/');
+        }
+        if(!donor){
+            this.props.history.push('/donors');
         } else {
             this.setState({ donor });
         }
@@ -26,8 +29,7 @@ class SingleDonorView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    donors: state.donorReducer.donors,
-    authToken: state.userReducer.authToken
+    donors: state.donorReducer.donors
 });
 
 export default connect(

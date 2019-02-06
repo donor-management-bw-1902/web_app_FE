@@ -50,7 +50,7 @@ class CreaterDonorView extends React.Component {
             contactMethod: this.state.methodOfCommunication,
             lastContacted: this.state.lastContacted
         }
-        this.props.addNewDonor(newDonor, this.props.authToken);
+        this.props.addNewDonor(newDonor, localStorage.getItem('AuthToken'));
         this.setState({ isSelected: !this.state.isSelected });
     }
 
@@ -67,7 +67,7 @@ class CreaterDonorView extends React.Component {
         const donor = this.props.donors.find(donor => donor.email === this.state.email);
         const dValue = e.target.parentElement.value;
         const donation = {donationAmount: dValue, donationLocation: this.state.locationOfDonation, donorID: donor.id };
-        this.props.addDonation( donation, this.props.authToken );
+        this.props.addDonation( donation, localStorage.getItem('AuthToken'));
 
         let pastDonations = [...this.state.pastDonations];
         let index = pastDonations.findIndex(donation => donation.id === Number(e.target.parentElement.id));
@@ -77,7 +77,7 @@ class CreaterDonorView extends React.Component {
     }
 
     componentDidMount(){
-        if(!this.props.authToken){
+        if(!localStorage.getItem('AuthToken')){
             this.props.history.push('/');
         }
     }
@@ -121,8 +121,7 @@ class CreaterDonorView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    donors: state.donorReducer.donors,
-    authToken: state.userReducer.authToken
+    donors: state.donorReducer.donors
 });
 
 export default connect(

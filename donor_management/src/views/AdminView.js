@@ -6,7 +6,7 @@ import '../styles/Admin.css';
 
 class AdminView extends React.Component {
     componentDidMount(){
-        if(!this.props.authToken){
+        if(!localStorage.getItem('AuthToken')){
             this.props.history.push('/');
         }
     }
@@ -21,7 +21,6 @@ class AdminView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    authToken: state.userReducer.authToken,
     isAdmin: state.userReducer.isAdmin
 });
 

@@ -4,12 +4,14 @@ import { connect } from "react-redux";
 import { Donors } from '../components';
 import { getDonors } from '../store/actions';
 
+import '../styles/Donors.css';
+
 class DonorsView extends React.Component {
 
     componentDidMount() {
-        this.props.getDonors(this.props.authToken);
+        this.props.getDonors(localStorage.getItem('AuthToken'));
         
-        if(!this.props.authToken){
+        if(!localStorage.getItem('AuthToken')){
             this.props.history.push('/');
         }
     }
@@ -34,7 +36,6 @@ class DonorsView extends React.Component {
 const mapStateToProps = state => ({
     donors: state.donorReducer.donors,
     isFetchingDonors: state.donorReducer.isFetchingDonors,
-    authToken: state.userReducer.authToken,
     isAdmin: state.userReducer.isAdmin
 });
 
