@@ -1,8 +1,9 @@
-export { default as Login } from "./Login";
-export { default as SignUp } from "./SignUp";
-export { default as Donors } from './Donors';
-export { default as CreateDonor } from './CreateDonor';
-export { default as Admin } from './Admin';
-export { default as AddDonations } from './AddDonations';
-export { default as UpdateDonor } from './UpdateDonor';
-export { default as SingleDonor } from './SingleDonor';
+export { default as Login } from "./users/Login";
+export { default as SignUp } from "./users/SignUp";
+export { default as Donors } from './donors/Donors';
+export { default as CreateDonor } from './donors/CreateDonor';
+export { default as Admin } from './users/Admin';
+export { default as AddDonations } from './donors/AddDonations';
+export { default as UpdateDonor } from './donors/UpdateDonor';
+export { default as SingleDonor } from './donors/SingleDonor';
+export { default as Navbar } from './Navbar';

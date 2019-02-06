@@ -1,0 +1,9 @@
+.navbar-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.navbar-wrapper h2 {
+    margin-right: 6%;
+}
