@@ -1,5 +1,5 @@
-import axios from 'axios';
-    
+import makeAxios from './axios-config';
+
 export const FETCHING_DONORS = 'FETCHING_DONORS';
 export const FETCHING_DONORS_SUCCESS = 'FETCHING_DONORS_SUCCESS';
 export const FETCHING_DONORS_FAILURE = 'FETCHING_DONORS_FAILURE';
@@ -13,37 +13,37 @@ export const UPDATING_DONOR = 'UPDATING_DONOR';
 export const UPDATING_DONOR_SUCCESS = 'UPDATING_DONOR_SUCCESS';
 export const UPDATING_DONOR_FAILURE = 'UPDATING_DONOR_FAILURE';
 
-export const getDonors = authToken => dispatch => {
+export const getDonors = () => dispatch => {
     dispatch({ type: FETCHING_DONORS });
-    axios
-        .get('https://donor-management.herokuapp.com/api/donors', { headers: { Authorization: authToken }})
+    makeAxios()
+        .get('donors')
         .then(res => dispatch({ type: FETCHING_DONORS_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: FETCHING_DONORS_FAILURE, payload: err }))
 };
 
-export const addNewDonor = (donor, authToken) => dispatch => {
+export const addNewDonor = donor => dispatch => {
     dispatch({ type: ADDING_DONOR });
-    axios
-        .post('https://donor-management.herokuapp.com/api/donors', donor, { headers: { Authorization: authToken }})
+    makeAxios()
+        .post('donors', donor)
         .then(res => {
-            axios.get('https://donor-management.herokuapp.com/api/donors', { headers: { Authorization: authToken }})
+            makeAxios().get('donors')
             .then(res => dispatch({ type: ADDING_DONOR_SUCCESS, payload: res.data }))
         })
         .catch(err => dispatch({ type: ADDING_DONOR_FAILURE, payload: err }))
 };
 
-export const addDonation = (donation, authToken) => dispatch => {
+export const addDonation = donation => dispatch => {
     dispatch({ type: ADDING_DONATION });
-    axios
-        .post('https://donor-management.herokuapp.com/api/donations', donation, { headers: { Authorization: authToken }})
+    makeAxios()
+        .post('donations', donation)
         .then(res => dispatch({type: ADDING_DONATION_SUCCESS, payload: res }))
         .catch(err => dispatch({ type: ADDING_DONATION_FAILURE, payload: err }))
 };
 
-export const updateDonor = (donor, id, authToken) => dispatch => {
+export const updateDonor = (donor, id) => dispatch => {
     dispatch({ type: UPDATING_DONOR });
-    axios
-        .put(`https://donor-management.herokuapp.com/api/donors/${id}`, donor, { headers: { Authorization: authToken }})
+    makeAxios()
+        .put(`donors/${id}`, donor)
         .then(res => dispatch({ type: UPDATING_DONOR_SUCCESS, payload: res }))
         .catch(err => dispatch({ type: UPDATING_DONOR_FAILURE, payload: err }))
 };
