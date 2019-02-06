@@ -7,6 +7,7 @@ const Admin = props => {
         <>
             <button className="sign-up-btn" onClick={() => {props.history.push('/sign-up')}}>Create Board Member</button>
             <button onClick={() => {props.history.push('/donor')}}>Create Donor</button>
+            <button onClick={() => {props.history.push('/donors')}}>Donor's List</button>
         </>
     );
 }

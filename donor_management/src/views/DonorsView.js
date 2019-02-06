@@ -8,6 +8,10 @@ class DonorsView extends React.Component {
 
     componentDidMount() {
         this.props.getDonors(this.props.authToken);
+        
+        if(!this.props.authToken){
+            this.props.history.push('/');
+        }
     }
 
     render(){
