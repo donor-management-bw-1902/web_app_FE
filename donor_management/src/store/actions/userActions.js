@@ -10,7 +10,7 @@ export const ADDING_USER_FAILURE = 'ADDING_USER_FAILURE';
 export const getUsers = () => dispatch => {
     dispatch({ type: FETCHING_USERS });
     makeAxios()
-        .get('/users')
+        .get('users')
         .then(res => dispatch({ type: FETCHING_USERS_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: FETCHING_USERS_FAILURE, payload: err }));
 };
@@ -18,7 +18,7 @@ export const getUsers = () => dispatch => {
 export const addNewUser = user => dispatch => {
     dispatch({ type: ADDING_USER });
     makeAxios()
-        .post('/users', user)
+        .post('users', user)
         .then(res => dispatch({ type: ADDING_USER_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: ADDING_USER_FAILURE, payload: err }));
 };
