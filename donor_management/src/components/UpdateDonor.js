@@ -4,12 +4,11 @@ const UpdateDonor = props => {
 
     return (
         <div>
-            <input type="text" name="donorName" placeholder="Name" value={props.donor.name} />
-            <input type="email" name="email" placeholder="Email" value={props.donor.email} />
-            {/* <input type="number" name="phoneNumber" placeholder="Phone Number" value={props.phoneNumber} onChange={props.handleInput}/>
+            <input type="text" name="donorName" placeholder="Name" value={props.donorName} onChange={props.handleInput}/>
+            <input type="email" name="email" placeholder="Email" value={props.email} onChange={props.handleInput}/>
             <input type="text" name="city" placeholder="City" value={props.city} onChange={props.handleInput}/>
             <input type="text" name="address" placeholder="Address" value={props.address} onChange={props.handleInput}/>
-            <input type="number" name="zip" placeholder="Zip" value={props.zip} onChange={props.handleInput}/> */}
+            <input type="number" name="zip" placeholder="Zip" value={props.zip} onChange={props.handleInput}/>
             {/* <label>
                 Date Last Contacted
                 <input type="date" name="lastContacted"  value={props.lastContacted} onChange={props.handleInput}/>
