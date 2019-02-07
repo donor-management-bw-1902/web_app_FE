@@ -9,7 +9,7 @@ const AddDonations = props => {
         alert('Donor Created!');
     }
     return(
-        <div>
+        <div className="past-donations">
             <h2>Past Donations</h2>
             <ul>
                 {props.pastDonations.map((donation, index) => {
@@ -25,11 +25,10 @@ const AddDonations = props => {
                     </li>;
                 })}
             </ul>
+            <label htmlFor="donation">Add a Donation:</label>
             <form onSubmit={props.addDonation}>
-                <label>
-                    Add a Donation: <input type="number" name="donation" placeholder="Donation Amount" value={props.donation} onChange={props.handleInput}/>
-                    <button>+</button>
-                </label>
+                <input id="donation" type="number" name="donation" placeholder="Donation Amount" value={props.donation} onChange={props.handleInput}/>
+                <button>+</button>
             </form>
             <button onClick={e => addedDonations(e)}>Finish</button>
         </div>

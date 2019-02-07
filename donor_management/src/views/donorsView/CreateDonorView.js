@@ -88,7 +88,7 @@ class CreaterDonorView extends React.Component {
 
     render(){
         return (
-            <div className="admin-wrapper">
+            <div className="create-donor-wrapper">
                 <div className="create-donor-tabs">
                     <h1 className={`header-tab ${!this.state.isSelected ? "selected-tab" : null}`}>Create Donor</h1>
                     <h1 className={`header-tab ${this.state.isSelected ? "selected-tab" : null}`}>Donations</h1>
