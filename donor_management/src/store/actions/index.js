@@ -30,5 +30,9 @@ export {
     UPDATING_DONOR,
     UPDATING_DONOR_SUCCESS,
     UPDATING_DONOR_FAILURE,
-    updateDonor
+    updateDonor,
+    FETCHING_DONATIONS,
+    FETCHING_DONATIONS_SUCCESS,
+    FETCHING_DONATIONS_FAILURE,
+    getDonations
 } from './donorActions';
