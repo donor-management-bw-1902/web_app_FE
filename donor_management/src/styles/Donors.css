@@ -17,6 +17,11 @@
     margin-bottom: 10px;
 }
 
+.donor-wrapper:hover {
+    background: lightgrey;
+    transform: scale(1.1);
+}
+
 .donor-wrapper {
     border: 1px solid lightgrey;
     border-radius: 5px;
