@@ -15,14 +15,14 @@ const SingleDonor = props => {
             </div>
             <div className="past-donations">
                 <h2>Past Donations</h2>
-                {props.pastDonations.map(donation => {
+                {props.pastDonations.length !== 0 ? props.pastDonations.map((donation, index) => {
                     return (
-                        <div className="donation" key={donation.donorID}>
+                        <div className="donation" key={index}>
                             <p>Donation Amount: {donation.donationAmount}</p>
                             <p>Location of Donation: {donation.donationLocation}</p>    
                         </div>
                     );
-                })}
+                }) : <h1>Loading...</h1>}
             </div>
         </div>
     );

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { UpdateDonor } from '../../components';
 import { updateDonor } from '../../store/actions';
 
+import '../../styles/UpdateDonor.css';
 
 class UpdateDonorView extends React.Component {
     state = {
