@@ -5,7 +5,7 @@ import { Navbar } from '../components';
 class NavbarView extends React.Component {
     render(){
         return(
-            <Navbar isAdmin={this.props.isAdmin} signOut={this.props.signOut} location={this.props.location}/>
+            <Navbar isAdmin={this.props.isAdmin} signOut={this.props.signOut} history={this.props.history} location={this.props.location}/>
         );
     }
 }

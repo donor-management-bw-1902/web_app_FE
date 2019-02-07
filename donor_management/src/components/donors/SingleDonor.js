@@ -17,7 +17,7 @@ const SingleDonor = props => {
                 <h2>Past Donations</h2>
                 {props.pastDonations.map(donation => {
                     return (
-                        <div className="donation">
+                        <div className="donation" key={donation.donorID}>
                             <p>Donation Amount: {donation.donationAmount}</p>
                             <p>Location of Donation: {donation.donationLocation}</p>    
                         </div>
