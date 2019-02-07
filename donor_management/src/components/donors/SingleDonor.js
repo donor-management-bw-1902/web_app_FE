@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../styles/SingleDonor.css';
+
 const SingleDonor = props => {
     return (
         <div className="single-donor-wrapper">
@@ -11,19 +13,23 @@ const SingleDonor = props => {
                 <p>Zip: {props.donor.zip}</p>
                 <p>Last Contacted: {props.donor.lastContacted}</p>
                 <p>Method of Communication: {props.donor.contactMethod}</p>
-                <button onClick={() => props.history.push('/donors')}>Back</button>
             </div>
             <div className="past-donations">
                 <h2>Past Donations</h2>
-                {props.pastDonations.length !== 0 ? props.pastDonations.map((donation, index) => {
-                    return (
-                        <div className="donation" key={index}>
-                            <p>Donation Amount: {donation.donationAmount}</p>
-                            <p>Location of Donation: {donation.donationLocation}</p>    
-                        </div>
-                    );
-                }) : <h1>Loading...</h1>}
+                <div className="donations">
+                    {props.pastDonations.length !== 0 ? props.pastDonations.map((donation, index) => {
+                        return (
+                            <div className="donation" key={index}>
+                                <label htmlFor="donation">Donation Amount:</label>
+                                <p id="donation">${donation.donationAmount}</p>
+                                <label htmlFor="location">Location of Donation:</label>
+                                <p id="location">{donation.donationLocation}</p>    
+                            </div>
+                        );
+                    }) : <h1>Loading...</h1>}
+                </div>
             </div>
+            <button onClick={() => props.history.push('/donors')}>Back</button>
         </div>
     );
 }

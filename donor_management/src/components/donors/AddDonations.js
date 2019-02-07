@@ -9,7 +9,7 @@ const AddDonations = props => {
         alert('Donor Created!');
     }
     return(
-        <div className="past-donations">
+        <div className="add-donations">
             <h2>Past Donations</h2>
             <ul>
                 {props.pastDonations.map((donation, index) => {

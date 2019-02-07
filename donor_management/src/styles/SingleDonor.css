@@ -1,0 +1,35 @@
+
+
+.single-donor-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.past-donations {
+    width: 60%;
+}
+
+.donations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.donation {
+    display: flex;
+    width: 100%;
+    border: 1px solid;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.donation label {
+    margin: 16px 2%;
+}
+
+.donation p {
+    font-weight: bold;
+    width: 24%;
+}
