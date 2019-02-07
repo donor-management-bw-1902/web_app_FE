@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { SingleDonor } from '../components';
-import { getDonations } from '../store/actions';
+import { SingleDonor } from '../../components';
+import { getDonations } from '../../store/actions';
 
 class SingleDonorView extends React.Component {
     state = {

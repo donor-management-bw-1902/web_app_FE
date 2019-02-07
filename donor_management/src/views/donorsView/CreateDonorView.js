@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { CreateDonor, AddDonations } from '../components';
-import { addNewDonor, addDonation } from '../store/actions';
+import { CreateDonor, AddDonations } from '../../components';
+import { addNewDonor, addDonation } from '../../store/actions';
 
-import '../styles/Admin.css';
+import '../../styles/Admin.css';
 
 let id = 0;
 class CreaterDonorView extends React.Component {

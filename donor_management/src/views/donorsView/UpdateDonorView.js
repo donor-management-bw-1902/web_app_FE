@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { UpdateDonor } from '../components';
-import { updateDonor } from '../store/actions';
+import { UpdateDonor } from '../../components';
+import { updateDonor } from '../../store/actions';
 
 
 class UpdateDonorView extends React.Component {

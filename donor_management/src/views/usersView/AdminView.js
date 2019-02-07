@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Admin } from '../components';
-import '../styles/Admin.css';
+import { Admin } from '../../components';
+import '../../styles/Admin.css';
 
 class AdminView extends React.Component {
     componentDidMount(){

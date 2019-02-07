@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-import { Donors } from '../components';
-import { getDonors } from '../store/actions';
+import { Donors } from '../../components';
+import { getDonors } from '../../store/actions';
 
-import '../styles/Donors.css';
+import '../../styles/Donors.css';
 
 class DonorsView extends React.Component {
 
