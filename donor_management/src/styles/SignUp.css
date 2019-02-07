@@ -10,3 +10,11 @@
     width: 71%;
     margin-left: 15%;
 }
+
+.sign-up-wrapper input {
+    padding: 1%;
+    margin-bottom: 2%;
+    border-radius: 3px;
+    border: 1px solid grey;
+    font-size: 1.4rem;
+}
