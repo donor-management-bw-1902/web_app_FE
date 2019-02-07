@@ -12,6 +12,9 @@ export const ADDING_DONATION_FAILURE = 'ADDING_DONATION_FAILURE';
 export const UPDATING_DONOR = 'UPDATING_DONOR';
 export const UPDATING_DONOR_SUCCESS = 'UPDATING_DONOR_SUCCESS';
 export const UPDATING_DONOR_FAILURE = 'UPDATING_DONOR_FAILURE';
+export const FETCHING_DONATIONS = 'FETCHING_DONATIONS';
+export const FETCHING_DONATIONS_SUCCESS = 'FETCHING_DONATIONS_SUCCESS';
+export const FETCHING_DONATIONS_FAILURE = 'FETCHING_DONATIONS_FAILURE';
 
 export const getDonors = () => dispatch => {
     dispatch({ type: FETCHING_DONORS });
@@ -46,4 +49,12 @@ export const updateDonor = (donor, id) => dispatch => {
         .put(`donors/${id}`, donor)
         .then(res => dispatch({ type: UPDATING_DONOR_SUCCESS, payload: res }))
         .catch(err => dispatch({ type: UPDATING_DONOR_FAILURE, payload: err }))
+};
+
+export const getDonations = () => dispatch => {
+    dispatch({ type: FETCHING_DONATIONS });
+    makeAxios()
+        .get('donations')
+        .then(res => dispatch({ type: FETCHING_DONATIONS_SUCCESS, payload: res.data }))
+        .catch(err => dispatch({ type: FETCHING_DONATIONS_FAILURE, payload: err }))
 };

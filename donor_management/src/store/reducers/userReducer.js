@@ -90,7 +90,8 @@ export const userReducer = (state = initialState, action ) => {
         case RESET_AUTH_TOKEN:
             return {
                 ...state,
-                authToken: ''
+                authToken: '',
+                isAdmin: ''
             }
         default:
             return state;

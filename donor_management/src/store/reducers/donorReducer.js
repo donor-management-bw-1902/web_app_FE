@@ -10,15 +10,20 @@ import {
     ADDING_DONATION_FAILURE,
     UPDATING_DONOR,
     UPDATING_DONOR_SUCCESS,
-    UPDATING_DONOR_FAILURE
+    UPDATING_DONOR_FAILURE,
+    FETCHING_DONATIONS,
+    FETCHING_DONATIONS_SUCCESS,
+    FETCHING_DONATIONS_FAILURE
 } from '../actions';
 
 const initialState = {
     donors:[],
+    donations:[],
     isFetchingDonors: false,
     isAddingDonor: false,
     isAddingDonation: false,
     isUpdatingDonor: false,
+    isFetchingDonations: false,
     response: '',
     error:''
 };
@@ -66,6 +71,26 @@ export const donorReducer = (state = initialState, action) => {
                 error: action.payload,
                 isAddingDonor: false
             }
+            // ===================== UPDATING_DONOR
+        case UPDATING_DONOR:
+            return {
+                ...state,
+                isUpdatingDonor: true,
+                error: ''
+            };
+        case UPDATING_DONOR_SUCCESS: 
+            return {
+                ...state,
+                response: action.payload,
+                isUpdatingDonor: false,
+                error: ''
+            }
+        case UPDATING_DONOR_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isUpdatingDonor: false
+            }
         // ===================== ADDING_DONATIONS
         case ADDING_DONATION:
             return {
@@ -85,25 +110,25 @@ export const donorReducer = (state = initialState, action) => {
                 error: action.payload,
                 isAddingDonation: false
             }
-        // ===================== ADDING_DONATIONS
-        case UPDATING_DONOR:
+        // ===================== FETCHING_DONATIONS
+        case FETCHING_DONATIONS:
             return {
                 ...state,
-                isUpdatingDonor: true,
-                error: ''
-            };
-        case UPDATING_DONOR_SUCCESS: 
-            return {
-                ...state,
-                response: action.payload,
-                isUpdatingDonor: false,
+                isFetchingDonations: true,
                 error: ''
             }
-        case UPDATING_DONOR_FAILURE:
+        case FETCHING_DONATIONS_SUCCESS:
+            return {
+                ...state,
+                donations: action.payload,
+                isFetchingDonations: false,
+                error: ''
+            }
+        case FETCHING_DONATIONS_FAILURE:
             return {
                 ...state,
                 error: action.payload,
-                isUpdatingDonor: false
+                isFetchingDonations: false
             }
         default:
             return state;
