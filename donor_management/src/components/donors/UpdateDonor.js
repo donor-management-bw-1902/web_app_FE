@@ -9,7 +9,7 @@ const UpdateDonor = props => {
         alert('Donor updated!');
     }
     return (
-        <div>
+        <div className="update-donor-wrapper">
             <input type="text" name="donorName" placeholder="Name" value={props.donorName} onChange={props.handleInput}/>
             <input type="email" name="email" placeholder="Email" value={props.email} onChange={props.handleInput}/>
             <input type="text" name="city" placeholder="City" value={props.city} onChange={props.handleInput}/>
