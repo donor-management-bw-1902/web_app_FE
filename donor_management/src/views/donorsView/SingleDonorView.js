@@ -34,15 +34,14 @@ class SingleDonorView extends React.Component {
     
     render(){
         return (
-            <SingleDonor donor={this.state.donor} history={this.props.history} pastDonations={this.state.pastDonations} isFetchingDonations={this.props.isFetchingDonations}/>
+            <SingleDonor donor={this.state.donor} history={this.props.history} pastDonations={this.state.pastDonations} />
         );
     }
 }
 
 const mapStateToProps = state => ({
     donors: state.donorReducer.donors,
-    donations: state.donorReducer.donations,
-    isFetchingDonations: state.donorReducer.isFetchingDonations
+    donations: state.donorReducer.donations
 });
 
 export default connect(
