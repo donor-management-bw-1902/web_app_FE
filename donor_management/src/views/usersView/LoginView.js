@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+
 import { Login } from '../../components';
 import { login, resetAuthToken } from '../../store/actions';
 import '../../styles/Login.css';
@@ -43,6 +44,7 @@ class LoginView extends React.Component {
     }
 
     render() {
+        
         return(
             <div className="login-wrapper">
                 <h1>Login</h1>
@@ -61,7 +63,8 @@ class LoginView extends React.Component {
 const mapStateToProps = state => ({
     error: state.userReducer.error,
     authToken: state.userReducer.authToken,
-    isAdmin: state.userReducer.isAdmin
+    isAdmin: state.userReducer.isAdmin,
+    isLoggingIn: state.userReducer.isLoggingIn
 });
 
 export default connect(
