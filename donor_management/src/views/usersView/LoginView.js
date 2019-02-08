@@ -22,9 +22,10 @@ class LoginView extends React.Component {
     }
 
     componentDidMount(){
-        if(localStorage.getItem('AuthToken')) {
-            localStorage.clear();
-        }
+        // if(localStorage.getItem('AuthToken')) {
+            
+        // }
+        localStorage.clear();
         this.props.resetAuthToken();
     }
 

@@ -7,6 +7,7 @@ const Navbar = props => {
     const signOut = e => {
         e.preventDefault();
         localStorage.removeItem('AuthToken');
+        localStorage.removeItem('isAdmin');
         props.history.push('/');
       }
     return (

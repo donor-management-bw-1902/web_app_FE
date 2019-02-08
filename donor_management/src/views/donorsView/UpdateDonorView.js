@@ -41,7 +41,9 @@ class UpdateDonorView extends React.Component {
 
     componentDidMount() {
         const donor = this.props.donors.find(donor => `${donor.id}` === this.props.match.params.id);
-       if(localStorage.getItem('isAdmin') === '1'){
+        if(!donor) return this.props.history.push('/donors');
+
+        if(localStorage.getItem('isAdmin') === '1'){
             if(!localStorage.getItem('AuthToken')){
                 this.props.history.push('/');
             } else {
@@ -56,9 +58,9 @@ class UpdateDonorView extends React.Component {
                     id: donor.id
                 });
             }
-       } else {
+        } else {
             this.props.history.push('/');
-       }
+        }
     }
 
     render() {
