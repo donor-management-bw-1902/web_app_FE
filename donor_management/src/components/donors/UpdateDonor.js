@@ -25,7 +25,7 @@ const UpdateDonor = props => {
                 <select id="methodOfCommunication" name="methodOfCommunication" value={props.methodOfCommunication} onChange={props.handleInput}>
                     <option value="">--Please choose an option--</option>
                     <option value="email">Email</option>
-                    <option value="phone">Phone</option>
+                    <option value="mail">Mail</option>
                 </select>
                 
                 <button onClick={updatedDonor}>Update</button>
