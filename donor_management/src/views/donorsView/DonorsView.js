@@ -16,7 +16,7 @@ class DonorsView extends React.Component {
     handlePage = e => {
         const pageList = document.querySelectorAll('.page-list');
         const newPageList = Array.from(pageList);
-    
+        
         newPageList.forEach(page => {
           if(page.id === e.target.id){
             page.classList.add('current-page');
@@ -31,6 +31,7 @@ class DonorsView extends React.Component {
 
     nextPageClick = e => {
         let changePage = this.state.currentPage; 
+
         if(e.target.classList.contains('right')) {
             changePage++;
        } else {
@@ -39,12 +40,31 @@ class DonorsView extends React.Component {
        this.setState({ currentPage: changePage });
     }
 
+    renderPageArrows = () => {
+
+        if(Math.ceil(this.props.donors.length / this.state.donorsPerPage) === this.state.currentPage){
+            return (
+                <div onClick={this.nextPageClick} className="page-next-arrow left">{'<'}</div>
+            );
+        } else if (this.state.currentPage === 1){
+            return (
+                <div onClick={this.nextPageClick} className="page-next-arrow right">{'>'}</div>
+            );
+        }
+        return(
+            <>
+                <div onClick={this.nextPageClick} className="page-next-arrow right">{'>'}</div>
+                <div onClick={this.nextPageClick} className="page-next-arrow left">{'<'}</div>
+            </>
+        );
+    }
+
     componentDidMount() {
         this.props.getDonors(localStorage.getItem('AuthToken'));
         
         if(!localStorage.getItem('AuthToken')){
             this.props.history.push('/');
-        }
+        }    
     }
 
     render(){
@@ -62,8 +82,7 @@ class DonorsView extends React.Component {
                         <h1>Donors</h1>
                         <Donors donors={this.props.donors} isAdmin={this.props.isAdmin} currentPage={this.state.currentPage} donorsPerPage={this.state.donorsPerPage}/>
                         <PageNumbers donors={this.props.donors} donorsPerPage={this.state.donorsPerPage} handlePage={this.handlePage} currentPage={this.state.currentPage}/>
-                        <div onClick={this.nextPageClick} className="page-next-arrow right">{'>'}</div>
-                        <div onClick={this.nextPageClick} className="page-next-arrow left">{'<'}</div>
+                        {this.renderPageArrows()}
                     </div>
                 )}
             </>
