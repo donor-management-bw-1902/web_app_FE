@@ -24,6 +24,7 @@ class DonorsView extends React.Component {
             page.classList.remove('current-page');
           }
         });
+
         this.setState({
           currentPage: e.target.id
         });
@@ -31,12 +32,21 @@ class DonorsView extends React.Component {
 
     nextPageClick = e => {
         let changePage = this.state.currentPage; 
+        const pageList = document.querySelectorAll('.page-list');
+        const newPageList = Array.from(pageList);
 
         if(e.target.classList.contains('right')) {
             changePage++;
-       } else {
+        } else {
             changePage--;
-       }
+        }
+
+        newPageList.forEach(page => {
+            if(page.id !== changePage){
+                page.classList.remove('current-page')
+            }
+        });
+        
        this.setState({ currentPage: changePage });
     }
 
@@ -71,7 +81,7 @@ class DonorsView extends React.Component {
         if(this.props.isFetchingDonors){
             return(
                 <div className="loader-spinner">
-                     <Loader type="Rings" color="black" height={80} width={80} />
+                     <Loader type="Rings" color="black" height={120} width={120} />
                 </div>
             );
         }

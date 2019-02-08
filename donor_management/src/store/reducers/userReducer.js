@@ -38,7 +38,8 @@ export const userReducer = (state = initialState, action ) => {
                 ...state,
                 authToken: action.payload.token,
                 isAdmin: action.payload.isAdmin,
-                isLoggingIn: false
+                isLoggingIn: false,
+                error: ''
             }
         case LOGIN_FAILURE:
             return {
@@ -84,7 +85,7 @@ export const userReducer = (state = initialState, action ) => {
             return {
                 ...state,
                 error: action.payload,
-                isAddingUser: false
+                isAddingUser: false,
             };
         // ===================== RESET_AUTH_TOKEN
         case RESET_AUTH_TOKEN:

@@ -47,7 +47,7 @@ class LoginView extends React.Component {
         if(this.props.isLoggingIn) {
         return (
             <div className="loader-spinner">
-                <Loader type="Rings" color="black" height={80} width={80} />
+                <Loader type="Rings" color="black" height={120} width={120} />
             </div>
         )
         }
