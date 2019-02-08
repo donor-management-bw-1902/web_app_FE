@@ -23,5 +23,5 @@ button {
 }
 
 button:hover {
-  box-shadow: inset 0px 0px 50px 3px white;
+  box-shadow: inset 0px 0px 15px 3px white;
 }
