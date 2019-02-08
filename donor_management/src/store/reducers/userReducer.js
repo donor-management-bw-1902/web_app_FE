@@ -45,7 +45,7 @@ export const userReducer = (state = initialState, action ) => {
             return {
                 ...state,
                 error: action.payload,
-                isLoggingIn: false
+                isLoggingIn: false,
             }
         // ===================== FETCHING_USERS
         case FETCHING_USERS:

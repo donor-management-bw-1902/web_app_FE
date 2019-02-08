@@ -5,11 +5,12 @@ import Loader from 'react-loader-spinner';
 import { Login } from '../../components';
 import { login, resetAuthToken } from '../../store/actions';
 import '../../styles/Login.css';
-
+let isError = true;
 class LoginView extends React.Component {
     state = {
         username: '',
-        password: ''
+        password: '',
+        isError: false
     };
 
     handleLogin = e => {
@@ -43,7 +44,10 @@ class LoginView extends React.Component {
         } 
         if(!this.props.isLoggingIn ){
             if(this.props.error){
-                alert(this.props.error)
+                if(isError){
+                    isError = false;
+                    alert(this.props.error)
+                }
             }
         } 
     }
