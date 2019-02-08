@@ -71,3 +71,23 @@
     border: none;
     border-radius: 3px;
 }
+
+.page-next-arrow {
+    position: fixed;
+    top: 44%;
+    font-size: 5.5rem;
+    cursor: pointer;
+    color: black;
+}
+
+.page-next-arrow:hover {
+    color: lightgrey;
+}
+
+.page-next-arrow.right{
+    right: 8%;
+}
+
+.page-next-arrow.left{
+    left: 8%;
+}

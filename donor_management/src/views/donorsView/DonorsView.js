@@ -29,6 +29,16 @@ class DonorsView extends React.Component {
         });
     }
 
+    nextPageClick = e => {
+        let changePage = this.state.currentPage; 
+        if(e.target.classList.contains('right')) {
+            changePage++;
+       } else {
+            changePage--;
+       }
+       this.setState({ currentPage: changePage });
+    }
+
     componentDidMount() {
         this.props.getDonors(localStorage.getItem('AuthToken'));
         
@@ -51,7 +61,9 @@ class DonorsView extends React.Component {
                     <div className="donors-wrapper">
                         <h1>Donors</h1>
                         <Donors donors={this.props.donors} isAdmin={this.props.isAdmin} currentPage={this.state.currentPage} donorsPerPage={this.state.donorsPerPage}/>
-                        <PageNumbers donors={this.props.donors} donorsPerPage={this.state.donorsPerPage} handlePage={this.handlePage} />
+                        <PageNumbers donors={this.props.donors} donorsPerPage={this.state.donorsPerPage} handlePage={this.handlePage} currentPage={this.state.currentPage}/>
+                        <div onClick={this.nextPageClick} className="page-next-arrow right">{'>'}</div>
+                        <div onClick={this.nextPageClick} className="page-next-arrow left">{'<'}</div>
                     </div>
                 )}
             </>
