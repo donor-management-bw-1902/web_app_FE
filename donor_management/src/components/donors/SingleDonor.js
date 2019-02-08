@@ -27,7 +27,7 @@ const SingleDonor = props => {
                                 <p id="location">{donation.donationLocation}</p>    
                             </div>
                         );
-                    }) : <Loader type="Rings" color="black" height={80} width={80} />}
+                    }) : <Loader type="Rings" color="black" height={120} width={120} />}
                 </div>
             </div>
             <button onClick={() => props.history.push('/donors')}>Back</button>

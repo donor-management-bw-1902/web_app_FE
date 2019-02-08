@@ -24,7 +24,7 @@ class UpdateDonorView extends React.Component {
         
         this.setState({ [e.target.name]: e.target.value} );
     }
-
+    //method used to send the updated donor information up to the database
     updateDonor = () => {
         const newDonor = { 
             name: this.state.donorName, 
@@ -43,7 +43,7 @@ class UpdateDonorView extends React.Component {
         const donor = this.props.donors.find(donor => `${donor.id}` === this.props.match.params.id);
         
         if(!donor) return this.props.history.push('/donors');
-
+        //checks to see if the user is an admin or not, if they are will set the state to the donor object found based on the donor clicked on from the donors list 
         if(localStorage.getItem('isAdmin') === '1'){
             if(!localStorage.getItem('AuthToken')){
                 this.props.history.push('/');
@@ -82,11 +82,11 @@ class UpdateDonorView extends React.Component {
         );
     }
 }
-
+//passes down the states from the reducer as props to this component
 const mapStateToProps = state => ({
     donors: state.donorReducer.donors
 });
-
+//HOC connect is used to allow this component to use the props that are passed down from the reducers as well as methods from the actions creator
 export default connect(
     mapStateToProps,
     { updateDonor }

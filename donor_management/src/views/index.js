@@ -1,3 +1,5 @@
+// EXPORT ALL VIEW FILES TO BE USED HERE
+
 export { default as LoginView } from "./usersView/LoginView";
 export { default as SignUpView } from "./usersView/SignUpView";
 export { default as CreateDonorView } from "./donorsView/CreateDonorView";

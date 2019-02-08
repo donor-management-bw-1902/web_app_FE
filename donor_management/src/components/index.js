@@ -1,3 +1,5 @@
+//EXPORT ALL COMPONENT FILES TO BE USED HERE
+
 export { default as Login } from "./users/Login";
 export { default as SignUp } from "./users/SignUp";
 export { default as Donors } from './donors/Donors';

@@ -8,7 +8,7 @@ const Donors = props => {
     const indexOfFirstDonor = indexOfLastDonor - props.donorsPerPage; //uses the index of the last donor on a page and subtracts the amount of donors per page to get the first index
     //this variable holds the new array that will display the donor data based off what page the user clicks on
     const currentDonors = props.donors.slice(indexOfFirstDonor, indexOfLastDonor); 
-
+    //method used to render the donors based on if they are an admin or a boardmember. Admins get the update donors list and boardmembers get the regular donor's list
     const conditionalRender = () =>{
         if(localStorage.getItem('isAdmin') === '1'){
             return currentDonors.map( donor => {

@@ -9,14 +9,14 @@ import '../../styles/Donors.css';
 
 class DonorsView extends React.Component {
     state ={
-        currentPage: 1,
-        donorsPerPage: 10,
+        currentPage: 1, // Tracks current page in the pagination system
+        donorsPerPage: 10, // Amount of donors that will be displayed per page
     }
-
+    //method that handles which page the user is on when they click on a page number at the bottom of the webapp
     handlePage = e => {
-        const pageList = document.querySelectorAll('.page-list');
-        const newPageList = Array.from(pageList);
-        
+        const pageList = document.querySelectorAll('.page-list');//grabs all elements with the page-list class name
+        const newPageList = Array.from(pageList);//makes the query select into an array
+        //loops through the array and applies current page to the page number that the user clicked on and removes it from the others
         newPageList.forEach(page => {
           if(page.id === e.target.id){
             page.classList.add('current-page');
@@ -24,12 +24,13 @@ class DonorsView extends React.Component {
             page.classList.remove('current-page');
           }
         });
-
+        //sets currentPage state to the number the user clicked on
         this.setState({
           currentPage: e.target.id
         });
     }
-
+    //method that handles when a user clicks on an arrow for the pagination system that is displayed on the left and right side of the web app in the
+    //donors list
     nextPageClick = e => {
         let changePage = this.state.currentPage; 
         const pageList = document.querySelectorAll('.page-list');
@@ -40,6 +41,12 @@ class DonorsView extends React.Component {
         } else {
             changePage--;
         }
+        //checks to see if the changePage is higher than the amount of pages or less than 1 if it is sets the current page to the last page or the first page
+        if(changePage > Math.ceil(this.props.donors.length / this.state.donorsPerPage)){
+            changePage = Math.ceil(this.props.donors.length / this.state.donorsPerPage)
+        } else if(changePage < 1){
+            changePage = 1
+        }
 
         newPageList.forEach(page => {
             if(page.id !== changePage){
@@ -49,7 +56,8 @@ class DonorsView extends React.Component {
         
        this.setState({ currentPage: changePage });
     }
-
+    //method used to render the arrows onto the webpage. Checks if the user is at the first page or the last page and will render the arrows based on what the current page is
+    //other wise both arrows will be rendered
     renderPageArrows = () => {
 
         if(Math.ceil(this.props.donors.length / this.state.donorsPerPage) === this.state.currentPage){
@@ -99,13 +107,13 @@ class DonorsView extends React.Component {
         );
     }
 }
-
+//passes down the states from the reducer as props to this component
 const mapStateToProps = state => ({
     donors: state.donorReducer.donors,
     isFetchingDonors: state.donorReducer.isFetchingDonors,
     isAdmin: state.userReducer.isAdmin
 });
-
+//HOC connect is used to allow this component to use the props that are passed down from the reducers as well as methods from the actions creator
 export default connect(
     mapStateToProps,
     { getDonors }
