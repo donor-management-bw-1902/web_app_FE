@@ -41,6 +41,11 @@ class LoginView extends React.Component {
             localStorage.setItem('AuthToken', this.props.authToken);
             localStorage.setItem('isAdmin', this.props.isAdmin)
         } 
+        if(!this.props.isLoggingIn ){
+            if(this.props.error){
+                alert(this.props.error)
+            }
+        } 
     }
 
     render() {
