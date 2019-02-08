@@ -7,3 +7,4 @@ export { default as AddDonations } from './donors/AddDonations';
 export { default as UpdateDonor } from './donors/UpdateDonor';
 export { default as SingleDonor } from './donors/SingleDonor';
 export { default as Navbar } from './Navbar';
+export { default as PageNumbers } from './PageNumbers';

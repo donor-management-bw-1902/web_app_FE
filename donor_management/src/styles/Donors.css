@@ -34,3 +34,40 @@
     width: 71%;
     font-size: 1.5rem;
 }
+
+.page-numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 20px;
+}
+
+.page-list {
+    cursor: pointer;
+    width: 2%;
+    margin-right: 1%;
+    border-bottom: 1px solid #32b8af;
+    list-style: none;
+    font-size: 1.6rem;
+}
+
+.page-list:hover {
+    -webkit-transform: none;
+    transform: none;
+    border: none;
+    box-shadow: 0 0 5px #ef6b2d;
+    color: #9064bf;
+    background: white;
+    z-index: 3;
+}
+
+.current-page {
+    background: #0879a1;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
