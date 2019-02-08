@@ -8,5 +8,13 @@
 .sign-up-wrapper button {
     padding: 4% 9%;
     width: 71%;
-    margin-left: 15%;
+    margin: 10% 15%;
+}
+
+.sign-up-wrapper input {
+    padding: 3%;
+    margin-bottom: 2%;
+    border-radius: 3px;
+    border: 1px solid grey;
+    font-size: 1.4rem;
 }

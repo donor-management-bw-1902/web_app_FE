@@ -5,15 +5,13 @@ import { Navbar } from '../components';
 class NavbarView extends React.Component {
     render(){
         return(
-            <Navbar isAdmin={this.props.isAdmin} signOut={this.props.signOut} location={this.props.location}/>
+            <Navbar history={this.props.history} location={this.props.location}/>
         );
     }
 }
 
 
-const mapStateToProps = state => ({
-    isAdmin: state.userReducer.isAdmin
-});
+const mapStateToProps = state => ({});
 
 export default connect(
     mapStateToProps,

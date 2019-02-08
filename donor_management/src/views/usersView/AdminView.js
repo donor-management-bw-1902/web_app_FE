@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Admin } from '../components';
-import '../styles/Admin.css';
+import { Admin } from '../../components';
+import '../../styles/Admin.css';
 
 class AdminView extends React.Component {
     componentDidMount(){
-        if(this.props.isAdmin === 1){
+        if(localStorage.getItem('isAdmin') === '1'){
             if(!localStorage.getItem('AuthToken')){
                 this.props.history.push('/');
             }
@@ -24,9 +24,7 @@ class AdminView extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-    isAdmin: state.userReducer.isAdmin
-});
+const mapStateToProps = state => ({});
 
 export default connect(
     mapStateToProps,

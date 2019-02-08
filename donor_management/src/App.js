@@ -5,15 +5,11 @@ import './App.css';
 import { SignUpView, LoginView, DonorsView, AdminView, CreateDonorView, UpdateDonorView, SingleDonorView, NavbarView } from './views';
 
 class App extends Component {
-  signOut = e => {
-    e.preventDefault();
-    localStorage.removeItem('AuthToken');
-    this.props.history.push('/');
-  }
+  
   render() {
     return (
       <div className="App">
-          <NavbarView signOut={this.signOut} location={this.props.location}/>
+          <NavbarView history={this.props.history} location={this.props.location}/>
           <div className="container-wrapper">
             <Route exact path = "/" component = {LoginView}/>
             <Route path = "/sign-up" component = {SignUpView} />

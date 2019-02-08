@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { CreateDonor, AddDonations } from '../components';
-import { addNewDonor, addDonation } from '../store/actions';
+import { CreateDonor, AddDonations } from '../../components';
+import { addNewDonor, addDonation } from '../../store/actions';
 
-import '../styles/Admin.css';
+import '../../styles/Admin.css';
 
 let id = 0;
 class CreaterDonorView extends React.Component {
@@ -77,7 +77,7 @@ class CreaterDonorView extends React.Component {
     }
 
     componentDidMount(){
-        if(this.props.isAdmin === 1){
+        if(localStorage.getItem('isAdmin') === '1'){
             if(!localStorage.getItem('AuthToken')){
                 this.props.history.push('/');
             }
@@ -88,7 +88,7 @@ class CreaterDonorView extends React.Component {
 
     render(){
         return (
-            <div className="admin-wrapper">
+            <div className="create-donor-wrapper">
                 <div className="create-donor-tabs">
                     <h1 className={`header-tab ${!this.state.isSelected ? "selected-tab" : null}`}>Create Donor</h1>
                     <h1 className={`header-tab ${this.state.isSelected ? "selected-tab" : null}`}>Donations</h1>
@@ -125,8 +125,7 @@ class CreaterDonorView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    donors: state.donorReducer.donors,
-    isAdmin: state.userReducer.isAdmin
+    donors: state.donorReducer.donors
 });
 
 export default connect(

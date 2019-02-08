@@ -1,18 +1,27 @@
 .admin-wrapper {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    margin-top: 14%;
+    align-items: center;
+    margin-top: 8%;
 }
 
 .admin-wrapper button {
-    padding: 7% 2%;
-    font-size: 1.5rem;
+    font-size: 3.5rem;
+    width: 500px;
+    height: 200px;
+    border-radius: 4px;
+    margin-bottom: 5%;
+}
+
+.create-donor-tabs {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .create-donor-tab {
     display: none;
 }
+
 .selected {
     display: block;
 }
@@ -24,4 +33,85 @@
 .selected-tab {
     color: deepskyblue;
     border-bottom: 1px solid deepskyblue;
+}
+
+.donor-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.donor-info-wrapper input {
+    padding: 1%;
+    margin-bottom: 2%;
+    border-radius: 3px;
+    border: 1px solid grey;
+    font-size: 1.4rem;
+}
+
+.donor-info-wrapper input[type="date"] {
+    width: 24.5%;
+}
+
+.donor-info-wrapper select {
+    padding: .7% 1.5%;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.donor-info-wrapper button {
+    padding: 1% 3%;
+}
+
+.add-donations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-donations ul {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 500px;
+}
+
+.add-donations ul:hover {
+    overflow: auto;
+}
+.add-donations li {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.add-donations li select {
+    margin-top: 13px; 
+}
+
+.add-donations button {
+    margin-top: 10px;
+    padding: 1% 2%;
+}
+
+.add-donations label {
+    margin-bottom: 5px;
+}
+
+.add-donations form {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+} 
+
+.add-donations form input {
+    height: 25px;
+}
+
+.add-donations form button {
+    margin: 0 3%;
+    padding: 1% 4%;
 }

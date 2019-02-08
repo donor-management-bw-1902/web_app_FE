@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { SignUp } from '../components';
-import { addNewUser } from '../store/actions';
-import '../styles/SignUp.css';
+import { SignUp } from '../../components';
+import { addNewUser } from '../../store/actions';
+import '../../styles/SignUp.css';
 
 class SignUpView extends React.Component {
     state = {
@@ -28,7 +28,7 @@ class SignUpView extends React.Component {
     }
 
     componentDidMount(){
-        if(this.props.isAdmin === 1){
+        if(localStorage.getItem('isAdmin') === '1'){
             if(!localStorage.getItem('AuthToken')){
                 this.props.history.push('/');
             }
@@ -53,9 +53,7 @@ class SignUpView extends React.Component {
     }
 };
 
-const mapStateToProps = state => ({
-    isAdmin: state.userReducer.isAdmin
-});
+const mapStateToProps = state => ({});
 
 export default connect(
     mapStateToProps,

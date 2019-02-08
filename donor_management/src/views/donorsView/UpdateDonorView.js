@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { UpdateDonor } from '../components';
-import { updateDonor } from '../store/actions';
+import { UpdateDonor } from '../../components';
+import { updateDonor } from '../../store/actions';
 
+import '../../styles/UpdateDonor.css';
 
 class UpdateDonorView extends React.Component {
     state = {
@@ -40,7 +41,9 @@ class UpdateDonorView extends React.Component {
 
     componentDidMount() {
         const donor = this.props.donors.find(donor => `${donor.id}` === this.props.match.params.id);
-       if(this.props.isAdmin === 1){
+        if(!donor) return this.props.history.push('/donors');
+
+        if(localStorage.getItem('isAdmin') === '1'){
             if(!localStorage.getItem('AuthToken')){
                 this.props.history.push('/');
             } else {
@@ -55,9 +58,9 @@ class UpdateDonorView extends React.Component {
                     id: donor.id
                 });
             }
-       } else {
+        } else {
             this.props.history.push('/');
-       }
+        }
     }
 
     render() {
@@ -80,8 +83,7 @@ class UpdateDonorView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    donors: state.donorReducer.donors,
-    isAdmin: state.userReducer.isAdmin
+    donors: state.donorReducer.donors
 });
 
 export default connect(

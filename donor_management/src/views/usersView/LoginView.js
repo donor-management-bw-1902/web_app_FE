@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Login } from '../components';
-import { login, resetAuthToken } from '../store/actions';
-import '../styles/Login.css';
+import { Login } from '../../components';
+import { login, resetAuthToken } from '../../store/actions';
+import '../../styles/Login.css';
 
 class LoginView extends React.Component {
     state = {
@@ -22,9 +22,10 @@ class LoginView extends React.Component {
     }
 
     componentDidMount(){
-        if(localStorage.getItem('AuthToken')) {
-            localStorage.removeItem('AuthToken');
-        }
+        // if(localStorage.getItem('AuthToken')) {
+            
+        // }
+        localStorage.clear();
         this.props.resetAuthToken();
     }
 
@@ -37,6 +38,7 @@ class LoginView extends React.Component {
                 this.props.history.push('/admin')
             }
             localStorage.setItem('AuthToken', this.props.authToken);
+            localStorage.setItem('isAdmin', this.props.isAdmin)
         } 
     }
 
