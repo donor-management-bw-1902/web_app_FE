@@ -16,7 +16,7 @@ const Navbar = props => {
             </div>
             <h2>Donor Management</h2>
             <div className="nav-links">
-                <NavLink to="/admin">{props.isAdmin === 1 ? "Admin" : null }</NavLink>
+                <NavLink to="/admin">{localStorage.getItem('isAdmin') === '1' ? "Admin" : null }</NavLink>
                 {props.location.pathname === '/' ? null : <button onClick={signOut}>Sign Out</button>}
             </div>
         </div>
