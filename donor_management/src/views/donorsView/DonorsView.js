@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import Loader from 'react-loader-spinner';
 
 import { Donors } from '../../components';
 import { getDonors } from '../../store/actions';
@@ -17,11 +18,15 @@ class DonorsView extends React.Component {
     }
 
     render(){
+        if(this.props.isFetchingDonors){
+            return(
+                <div className="loader-spinner">
+                     <Loader type="Rings" color="black" height={80} width={80} />
+                </div>
+            );
+        }
         return (
             <> 
-                {this.props.isFetchingDonors && (
-                    <h1>Loading......</h1>
-                )}
                 {this.props.donors && (
                     <div className="donors-wrapper">
                         <h1>Donors</h1>

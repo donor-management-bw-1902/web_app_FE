@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from 'react-loader-spinner';
 
 import '../../styles/SingleDonor.css';
 
@@ -26,7 +27,7 @@ const SingleDonor = props => {
                                 <p id="location">{donation.donationLocation}</p>    
                             </div>
                         );
-                    }) : <h1>Loading...</h1>}
+                    }) : <Loader type="Rings" color="black" height={80} width={80} />}
                 </div>
             </div>
             <button onClick={() => props.history.push('/donors')}>Back</button>

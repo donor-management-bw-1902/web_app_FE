@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import Loader from 'react-loader-spinner';
 
 import { Login } from '../../components';
 import { login, resetAuthToken } from '../../store/actions';
@@ -44,7 +44,13 @@ class LoginView extends React.Component {
     }
 
     render() {
-        
+        if(this.props.isLoggingIn) {
+        return (
+            <div className="loader-spinner">
+                <Loader type="Rings" color="black" height={80} width={80} />
+            </div>
+        )
+        }
         return(
             <div className="login-wrapper">
                 <h1>Login</h1>

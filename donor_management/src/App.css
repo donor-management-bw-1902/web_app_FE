@@ -25,3 +25,9 @@ button {
 button:hover {
   box-shadow: inset 0px 0px 15px 3px white;
 }
+
+.loader-spinner {
+  position: fixed;
+  right: 48%;
+  bottom: 50%;
+}
