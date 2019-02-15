@@ -2,6 +2,10 @@
 
 View webapp at https://donor-management.netlify.com/
 
+# Disclamer
+
+All donor's listed are faked for testing purposes. All contact information and names are not real people. All data was generated using a libary called 'faker'.
+
 # Donor Management App
 
 This webapp is a donor management app that allows you as a board member to be able to view a list of donors. The Admin(s) have access to creating and updating donors on the Database as well as creating board members accounts. 
@@ -23,5 +27,17 @@ select a single donor that will take you to a page that displays that particualr
 
 ## Single Donor's Page
 
-This page displays the selected donor from the donor's page. It will display all information held on the user from the database. This includes Name, email, last time contacted etc. It will also display their past Donations and where those donations were donated to
+This page displays the selected donor from the donor's page. It will display all information held on the user from the database. This includes Name, email, last time contacted etc. It will also display their past Donations and where those donations were donated to.
+
+##For testing purposes
+
+Use this account information to access the web-app.
+
+Admin login
+Username: Admin1
+password: password
+
+User login(or create one as admin)
+Username: user1
+password: password
 
