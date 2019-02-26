@@ -29,7 +29,7 @@ select a single donor that will take you to a page that displays that particualr
 
 This page displays the selected donor from the donor's page. It will display all information held on the user from the database. This includes Name, email, last time contacted etc. It will also display their past Donations and where those donations were donated to.
 
-##For testing purposes
+## For testing purposes
 
 Use this account information to access the web-app.
 
